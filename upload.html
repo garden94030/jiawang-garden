@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>佳旺景觀園藝 — 照片上傳</title>
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+    html{-webkit-text-size-adjust:100%;}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft JhengHei",sans-serif;background:#f5f5f0;color:#333;line-height:1.5;min-height:100vh;min-height:100dvh;}
+    img{max-width:100%;display:block;}
+    button{cursor:pointer;border:none;background:none;font:inherit;}
+    input,select{font:inherit;}
+
+    :root{
+      --green:#2d6a4f;--green-dark:#1b4332;
+      --warm:#f4a261;--warm-dark:#e76f51;
+      --cream:#fefae0;--cream-dark:#faedcd;
+      --leaf:#95d5b2;--leaf-light:#d8f3dc;
+    }
+
+    /* Header */
+    .header{background:var(--green-dark);color:#fff;padding:14px 16px;text-align:center;position:sticky;top:0;z-index:10;}
+    .header-brand{display:flex;align-items:center;justify-content:center;gap:8px;}
+    .header-brand span{font-size:24px;}
+    .header-title{font-size:16px;font-weight:800;}
+    .header-sub{font-size:11px;color:var(--leaf);margin-top:2px;}
+
+    /* Main */
+    .main{max-width:500px;margin:0 auto;padding:16px;}
+
+    /* Welcome */
+    .welcome{background:#fff;border-radius:20px;padding:20px;margin-bottom:16px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.04);}
+    .welcome-avatar{width:64px;height:64px;border-radius:50%;background:var(--leaf-light);margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-size:32px;}
+    .welcome h2{font-size:18px;font-weight:800;color:var(--green-dark);}
+    .welcome p{font-size:13px;color:#888;margin-top:4px;}
+
+    /* Upload area */
+    .upload-card{background:#fff;border-radius:20px;padding:20px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.04);}
+    .card-label{font-size:15px;font-weight:700;color:var(--green-dark);margin-bottom:12px;display:flex;align-items:center;gap:6px;}
+
+    /* Big upload buttons */
+    .upload-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
+    .upload-big-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:24px 12px;border-radius:16px;font-weight:700;font-size:14px;transition:all .2s;border:3px dashed;}
+    .btn-camera{background:var(--leaf-light);border-color:var(--leaf);color:var(--green-dark);}
+    .btn-camera:hover,.btn-camera:active{background:var(--leaf);border-color:var(--green);}
+    .btn-album{background:rgba(244,162,97,.1);border-color:var(--warm);color:var(--warm-dark);}
+    .btn-album:hover,.btn-album:active{background:rgba(244,162,97,.2);border-color:var(--warm-dark);}
+    .upload-big-btn span{font-size:36px;}
+
+    /* Hidden inputs */
+    .hidden-input{display:none;}
+
+    /* Preview */
+    .preview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px;}
+    .preview-item{position:relative;aspect-ratio:1;border-radius:12px;overflow:hidden;background:var(--cream);border:2px solid var(--cream-dark);}
+    .preview-item img{width:100%;height:100%;object-fit:cover;}
+    .preview-remove{position:absolute;top:4px;right:4px;width:28px;height:28px;background:rgba(230,57,70,.9);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;}
+    .preview-count{text-align:center;font-size:13px;color:#888;margin-bottom:12px;}
+
+    /* Form fields */
+    .field{margin-bottom:14px;}
+    .field-label{display:block;font-size:14px;font-weight:600;color:var(--green-dark);margin-bottom:6px;}
+    .field-input{width:100%;padding:14px;border:2px solid var(--cream-dark);border-radius:14px;font-size:16px;outline:none;transition:border .2s;background:#fff;}
+    .field-input:focus{border-color:var(--leaf);}
+    .field-select{appearance:none;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 14px center;padding-right:40px;}
+
+    /* Stage pills */
+    .stage-pills{display:flex;flex-wrap:wrap;gap:8px;}
+    .stage-pill{padding:10px 16px;border-radius:14px;font-size:14px;font-weight:600;background:var(--cream);color:#888;transition:all .2s;border:2px solid transparent;display:flex;align-items:center;gap:6px;}
+    .stage-pill.active{background:var(--green);color:#fff;border-color:var(--green);}
+    .stage-pill:hover:not(.active){background:var(--leaf-light);border-color:var(--leaf);}
+
+    /* Submit */
+    .submit-btn{width:100%;padding:18px;background:var(--warm);color:#fff;font-weight:800;font-size:18px;border-radius:16px;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:8px;}
+    .submit-btn:hover,.submit-btn:active{background:var(--warm-dark);transform:scale(1.02);}
+    .submit-btn:disabled{opacity:.4;transform:none;}
+
+    /* Status */
+    .status{text-align:center;padding:16px;border-radius:14px;margin-top:12px;font-weight:600;font-size:15px;display:none;}
+    .status.success{display:block;background:var(--leaf-light);color:var(--green-dark);}
+    .status.error{display:block;background:#fce4e6;color:#e63946;}
+
+    /* History */
+    .history-card{background:#fff;border-radius:20px;padding:20px;box-shadow:0 1px 4px rgba(0,0,0,.04);}
+    .history-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+    .history-item{aspect-ratio:1;border-radius:10px;overflow:hidden;background:var(--cream);position:relative;}
+    .history-item img{width:100%;height:100%;object-fit:cover;}
+    .history-item-label{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.5);color:#fff;font-size:10px;padding:3px 6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+    .history-empty{text-align:center;color:#aaa;padding:24px;font-size:14px;}
+
+    /* Toast */
+    .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--green-dark);color:#fff;padding:14px 28px;border-radius:14px;font-size:15px;font-weight:700;box-shadow:0 4px 20px rgba(0,0,0,.2);z-index:999;display:none;white-space:nowrap;max-width:90vw;text-align:center;}
+    .toast.show{display:block;animation:slideUp .3s ease-out;}
+    @keyframes slideUp{from{opacity:0;transform:translateX(-50%) translateY(10px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+
+    /* Footer */
+    .footer{text-align:center;padding:16px;font-size:11px;color:#aaa;margin-top:8px;}
+  </style>
+</head>
+<body>
+
+  <div class="toast" id="toast"></div>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-brand"><span>🦋</span><div><div class="header-title">佳旺景觀園藝</div></div></div>
+    <div class="header-sub">照片上傳管理</div>
+  </div>
+
+  <div class="main">
+
+    <!-- 歡迎 -->
+    <div class="welcome">
+      <div class="welcome-avatar">📸</div>
+      <h2>阿來老師，歡迎！</h2>
+      <p>選擇照片 → 填寫資訊 → 按上傳，就完成了！</p>
+    </div>
+
+    <!-- 上傳區 -->
+    <div class="upload-card">
+      <div class="card-label">📷 第一步：選擇照片</div>
+
+      <div class="upload-actions">
+        <button class="upload-big-btn btn-camera" onclick="document.getElementById('cameraInput').click()">
+          <span>📸</span>
+          直接拍照
+        </button>
+        <button class="upload-big-btn btn-album" onclick="document.getElementById('albumInput').click()">
+          <span>🖼️</span>
+          從相簿選
+        </button>
+      </div>
+
+      <!-- 拍照用（啟動相機） -->
+      <input type="file" id="cameraInput" class="hidden-input" accept="image/*" capture="environment" multiple onchange="handleFiles(this.files)" />
+      <!-- 相簿用 -->
+      <input type="file" id="albumInput" class="hidden-input" accept="image/*" multiple onchange="handleFiles(this.files)" />
+
+      <!-- 預覽 -->
+      <div class="preview-count" id="previewCount" style="display:none"></div>
+      <div class="preview-grid" id="previewGrid"></div>
+    </div>
+
+    <!-- 資訊填寫 -->
+    <div class="upload-card" id="infoCard" style="display:none">
+      <div class="card-label">✏️ 第二步：填寫照片資訊</div>
+
+      <div class="field">
+        <label class="field-label">蝴蝶名稱（或主題）</label>
+        <input type="text" class="field-input" id="photoName" placeholder="例：大鳳蝶、校園蝴蝶園" />
+      </div>
+
+      <div class="field">
+        <label class="field-label">照片分類</label>
+        <div class="stage-pills" id="stagePills">
+          <button class="stage-pill active" data-val="adult" onclick="pickStage(this)">🦋 成蝶</button>
+          <button class="stage-pill" data-val="egg" onclick="pickStage(this)">🥚 卵</button>
+          <button class="stage-pill" data-val="larva" onclick="pickStage(this)">🐛 幼蟲</button>
+          <button class="stage-pill" data-val="pupa" onclick="pickStage(this)">🫘 蛹</button>
+          <button class="stage-pill" data-val="teaching" onclick="pickStage(this)">🏫 教學</button>
+          <button class="stage-pill" data-val="habitat" onclick="pickStage(this)">🌿 環境</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="field-label">說明（選填）</label>
+        <input type="text" class="field-input" id="photoDesc" placeholder="拍攝地點、蝴蝶特徵等" />
+      </div>
+    </div>
+
+    <!-- 上傳按鈕 -->
+    <div id="submitArea" style="display:none">
+      <button class="submit-btn" id="submitBtn" onclick="doUpload()">
+        🦋 上傳照片
+      </button>
+      <div class="status" id="uploadStatus"></div>
+    </div>
+
+    <!-- 已上傳紀錄 -->
+    <div class="history-card" style="margin-top:16px">
+      <div class="card-label">📂 已上傳的照片</div>
+      <div id="historyGrid"></div>
+    </div>
+
+    <div class="footer">
+      🦋 佳旺景觀園藝 · 照片管理系統<br>
+      有問題請聯絡至祥
+    </div>
+  </div>
+
+  <script>
+    /* === State === */
+    let pendingFiles = []; // stores actual File objects
+    let pendingPreviews = []; // stores data URLs for preview
+    let selectedStage = 'adult';
+
+    /* === File handling === */
+    function handleFiles(fileList) {
+      for (const file of fileList) {
+        if (!file.type.startsWith('image/')) continue;
+        if (pendingFiles.length >= 20) { showToast('最多同時上傳 20 張'); break; }
+        pendingFiles.push(file);
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          pendingPreviews.push(e.target.result);
+          renderPreviews();
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    function renderPreviews() {
+      const grid = document.getElementById('previewGrid');
+      const count = document.getElementById('previewCount');
+      const info = document.getElementById('infoCard');
+      const submit = document.getElementById('submitArea');
+
+      if (pendingFiles.length === 0) {
+        grid.innerHTML = '';
+        count.style.display = 'none';
+        info.style.display = 'none';
+        submit.style.display = 'none';
+        return;
+      }
+
+      count.style.display = 'block';
+      count.textContent = '已選 ' + pendingFiles.length + ' 張照片';
+      info.style.display = 'block';
+      submit.style.display = 'block';
+
+      grid.innerHTML = pendingPreviews.map((src, i) => `
+        <div class="preview-item">
+          <img src="${src}" alt="預覽" />
+          <button class="preview-remove" onclick="removePending(${i})">✕</button>
+        </div>
+      `).join('');
+
+      document.getElementById('submitBtn').textContent = '🦋 上傳 ' + pendingFiles.length + ' 張照片';
+    }
+
+    function removePending(i) {
+      pendingFiles.splice(i, 1);
+      pendingPreviews.splice(i, 1);
+      renderPreviews();
+    }
+
+    /* === Stage picker === */
+    function pickStage(btn) {
+      document.querySelectorAll('.stage-pill').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      selectedStage = btn.dataset.val;
+    }
+
+    /* === Upload to server === */
+    async function doUpload() {
+      if (pendingFiles.length === 0) return;
+
+      const btn = document.getElementById('submitBtn');
+      btn.disabled = true;
+      btn.textContent = '⏳ 上傳中...';
+
+      const name = document.getElementById('photoName').value.trim() || '未命名';
+      const desc = document.getElementById('photoDesc').value.trim();
+
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('stage', selectedStage);
+      formData.append('desc', desc);
+      formData.append('uploadedBy', '劉阿來');
+      pendingFiles.forEach(f => formData.append('photos', f));
+
+      try {
+        const resp = await fetch('/api/upload', { method: 'POST', body: formData });
+        const result = await resp.json();
+
+        if (result.success) {
+          const uploadCount = result.count;
+          pendingFiles = [];
+          pendingPreviews = [];
+          renderPreviews();
+          document.getElementById('photoName').value = '';
+          document.getElementById('photoDesc').value = '';
+
+          const status = document.getElementById('uploadStatus');
+          status.className = 'status success';
+          status.textContent = '✅ 成功上傳 ' + uploadCount + ' 張照片！';
+          status.style.display = 'block';
+          showToast('✅ 上傳成功 ' + uploadCount + ' 張！');
+          setTimeout(() => { status.style.display = 'none'; }, 4000);
+
+          renderHistory();
+        } else {
+          throw new Error(result.error || '上傳失敗');
+        }
+      } catch (e) {
+        const status = document.getElementById('uploadStatus');
+        status.className = 'status error';
+        status.textContent = '❌ ' + e.message;
+        status.style.display = 'block';
+        showToast('❌ 上傳失敗，請重試');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = '🦋 上傳照片';
+      }
+    }
+
+    /* === History from server === */
+    async function renderHistory() {
+      const container = document.getElementById('historyGrid');
+      try {
+        const resp = await fetch('/api/photos');
+        const photos = await resp.json();
+        const myPhotos = photos.filter(p => p.uploadedBy === '劉阿來');
+
+        if (myPhotos.length === 0) {
+          container.innerHTML = '<div class="history-empty">還沒有上傳過照片</div>';
+          return;
+        }
+
+        container.innerHTML = '<div style="font-size:12px;color:#aaa;margin-bottom:8px">共 ' + myPhotos.length + ' 張（顯示最近 12 張）</div>' +
+          '<div class="history-grid">' +
+          myPhotos.slice(0, 12).map(p => `
+            <div class="history-item">
+              <img src="${p.url}" alt="${p.name}" />
+              <div class="history-item-label">${p.name}</div>
+            </div>
+          `).join('') +
+          '</div>';
+      } catch (e) {
+        container.innerHTML = '<div class="history-empty">無法載入，請確認網路連線</div>';
+      }
+    }
+
+    /* === Toast === */
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 3000);
+    }
+
+    /* === Init === */
+    renderHistory();
+  </script>
+</body>
+</html>
