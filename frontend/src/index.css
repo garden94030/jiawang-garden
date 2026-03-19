@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;600&display=swap');
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    @apply font-sans text-navy-900 bg-surface;
+  }
+  h1, h2, h3 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  /* ── Buttons ── */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2
+           bg-navy-900 text-white px-8 py-3.5
+           text-xs tracking-ultra uppercase font-sans font-medium
+           hover:bg-navy-700 transition-all duration-300;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2
+           border border-white/60 text-white px-8 py-3.5
+           text-xs tracking-ultra uppercase font-sans font-medium
+           hover:bg-white hover:text-navy-900 transition-all duration-300;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2
+           border border-navy-900 text-navy-900 px-8 py-3.5
+           text-xs tracking-ultra uppercase font-sans font-medium
+           hover:bg-navy-900 hover:text-white transition-all duration-300;
+  }
+
+  /* ── Cards ── */
+  .card {
+    @apply bg-white overflow-hidden;
+  }
+
+  /* ── Typography ── */
+  .eyebrow {
+    @apply text-xs tracking-ultra uppercase text-warm-400 font-sans font-medium;
+  }
+  .display-title {
+    @apply font-serif text-4xl md:text-5xl text-navy-900 leading-tight;
+  }
+  .section-label {
+    @apply text-xs tracking-ultra uppercase text-navy-400 font-sans mb-4 block;
+  }
+  .divider-gold {
+    @apply w-12 h-px bg-warm-400 my-6;
+  }
+
+  /* ── 向下相容 ── */
+  .section-title   { @apply font-serif text-3xl text-navy-900 mb-2; }
+  .section-subtitle { @apply text-navy-400 text-base mb-10; }
+}
