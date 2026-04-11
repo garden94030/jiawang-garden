@@ -1,0 +1,132 @@
+{
+  "language": "zh-TW",
+  "theme": "dark",
+  "auto_refresh": true,
+  "refresh_interval": 15,
+  "auto_sync": false,
+  "sync_interval": 5,
+  "default_export_path": null,
+  "proxy": {
+    "enabled": true,
+    "allow_lan_access": false,
+    "auth_mode": "auto",
+    "port": 8045,
+    "api_key": "sk-c39af169a21c4cc3808442eefc00eaab",
+    "admin_password": null,
+    "auto_start": true,
+    "custom_mapping": {
+      "internal-background-task": "gemini-3-flash",
+      "grok": "gemini-2.5-flash",
+      "grok-3": "gemini-2.5-flash",
+      "grok-3.5": "gemini-2.5-flash",
+      "grok-4": "gemini-2.5-flash"
+    },
+    "request_timeout": 120,
+    "enable_logging": true,
+    "debug_logging": {
+      "enabled": false,
+      "output_dir": null
+    },
+    "upstream_proxy": {
+      "enabled": false,
+      "url": ""
+    },
+    "zai": {
+      "enabled": false,
+      "base_url": "https://api.z.ai/api/anthropic",
+      "api_key": "",
+      "dispatch_mode": "off",
+      "model_mapping": {},
+      "models": {
+        "opus": "glm-4.7",
+        "sonnet": "glm-4.7",
+        "haiku": "glm-4.5-air"
+      },
+      "mcp": {
+        "enabled": false,
+        "web_search_enabled": false,
+        "web_reader_enabled": false,
+        "vision_enabled": false
+      }
+    },
+    "user_agent_override": null,
+    "scheduling": {
+      "mode": "Balance",
+      "max_wait_seconds": 60
+    },
+    "experimental": {
+      "enable_signature_cache": true,
+      "enable_tool_loop_recovery": true,
+      "enable_cross_model_checks": true,
+      "enable_usage_scaling": false,
+      "context_compression_threshold_l1": 0.4,
+      "context_compression_threshold_l2": 0.55,
+      "context_compression_threshold_l3": 0.7
+    },
+    "security_monitor": {
+      "blacklist": {
+        "enabled": false,
+        "block_message": "Access denied"
+      },
+      "whitelist": {
+        "enabled": false,
+        "whitelist_priority": true
+      }
+    },
+    "preferred_account_id": null,
+    "saved_user_agent": null
+  },
+  "antigravity_executable": null,
+  "antigravity_args": null,
+  "auto_launch": true,
+  "scheduled_warmup": {
+    "enabled": false,
+    "monitored_models": [
+      "gemini-3-flash",
+      "claude-sonnet-4-5",
+      "gemini-3-pro-high",
+      "gemini-3-pro-image"
+    ]
+  },
+  "quota_protection": {
+    "enabled": false,
+    "threshold_percentage": 10,
+    "monitored_models": [
+      "claude-sonnet-4-5",
+      "gemini-3-pro-high",
+      "gemini-3-flash",
+      "gemini-3-pro-image"
+    ]
+  },
+  "pinned_quota_models": {
+    "models": [
+      "gemini-3-pro-high",
+      "gemini-3-flash",
+      "gemini-3-pro-image",
+      "claude-sonnet-4-5-thinking"
+    ]
+  },
+  "circuit_breaker": {
+    "enabled": true,
+    "backoff_steps": [
+      60,
+      300,
+      1800,
+      7200
+    ]
+  },
+  "agents": {
+    "enabled": true,
+    "api_provider": "gemini",
+    "gemini": {
+      "api_base": "https://generativelanguage.googleapis.com/v1beta/openai/",
+      "api_key": "AIzaSyCEM-RZf7Yye8XoOiMbv0NduAxDGIxMEJU",
+      "model": "gemini-2.5-flash",
+      "enabled": true
+    },
+    "grok": {
+      "disabled": true,
+      "note": "Grok API 額度已耗盡，改用 Gemini"
+    }
+  }
+}
