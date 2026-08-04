@@ -80,6 +80,8 @@ test('homepage includes canonical and Organization metadata', async () => {
   assert.equal(response.status, 200);
   assert.match(body, /rel="canonical"/);
   assert.match(body, /"@type": "Organization"/);
+  assert.match(body, /gardenjiawang@gmail\.com/);
+  assert.match(body, /mailto:gardenjiawang@gmail\.com/);
   assert.match(body, /og\.png/);
 });
 

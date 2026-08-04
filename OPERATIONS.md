@@ -5,6 +5,7 @@
 - 公開網址：<https://jiawang-garden.onrender.com/>
 - 健康檢查：<https://jiawang-garden.onrender.com/healthz>
 - Sitemap：<https://jiawang-garden.onrender.com/sitemap.xml>
+- 電子信箱：<mailto:gardenjiawang@gmail.com>
 
 ## 最簡單的人工照片流程
 
@@ -35,7 +36,7 @@
 
 ## 父親的使用方式
 
-最省事的方式是建立「佳旺景觀園藝」Facebook Page，父親只需要在 Page 發照片與文字。由你保留 Page 完整控制權，再授予父親發文所需的 Page access。Meta 的官方建立流程本身沒有付款步驟；廣告或加強推廣才是另外選購。
+日常聯絡可使用 `gardenjiawang@gmail.com`。最省事的內容發布方式是建立「佳旺景觀園藝」Facebook Page，父親只需要在 Page 發照片與文字。由你保留 Page 完整控制權，再授予父親發文所需的 Page access。Meta 的官方建立流程本身沒有付款步驟；廣告或加強推廣才是另外選購。
 
 目前提供的 `alia.liu.60365` 是個人 Facebook 帳號，網站可以連結，但正式每週自動同步只使用 Facebook Page 與官方 API，不抓個人密碼、Cookie，也不以爬蟲繞過登入限制。
 

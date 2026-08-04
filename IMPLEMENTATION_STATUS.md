@@ -7,7 +7,7 @@
 - 本機 Git／Node 專案初始化、依賴鎖定、Render health check。
 - 線上敏感路徑止血：不再公開 `server.js`、`package.json`、runtime JSON 或未授權留言。
 - 舊版瀏覽器管理密碼與假登入流程停用；管理 API 預設 fail-closed。
-- 聯絡表單在沒有耐久保存時停用；網頁改為使用者提供的 Facebook 聯絡入口。
+- 聯絡表單在沒有耐久保存時停用；網頁改為使用者提供的 `gardenjiawang@gmail.com` 與 Facebook 聯絡入口。
 - 本機媒體 magic-byte、大小與 SHA-256 檢查、去重、manifest lock、原子 JSON 寫入及草稿核准流程。
 - Facebook Page 貼文正規化與 S3 相容物件儲存匯入器；缺少耐久儲存時不會保存臨時 CDN URL。
 - 靜態更新頁、首頁更新列表、canonical、Open Graph、JSON-LD、robots 與 sitemap。

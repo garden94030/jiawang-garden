@@ -28,6 +28,7 @@ npm start
 - 詳細落地方案：`IMPLEMENTATION_PLAN.md`
 - 實際操作手冊：`OPERATIONS.md`
 - 完成狀態與外部待辦：`IMPLEMENTATION_STATUS.md`
+- 帳號申請順序：`ACCOUNT_SETUP_CHECKLIST.md`
 - 每週內容來源：公司 Facebook 粉絲專頁
 - 發布目標：公司網站、Facebook、Instagram、Threads、YouTube
 
