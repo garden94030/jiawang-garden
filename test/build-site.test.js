@@ -149,3 +149,16 @@ test('duplicate slugs are rejected instead of overwriting an update page', t => 
 
   assert.throws(() => buildSite({ rootDir, siteUrl: SITE_URL }), /重複的更新 slug/);
 });
+
+test('rebuild removes stale generated pages after content is archived', t => {
+  const rootDir = workspace();
+  t.after(() => fs.rmSync(rootDir, { recursive: true, force: true }));
+  const raw = writeUpdate(rootDir, 'update.json');
+  buildSite({ rootDir, siteUrl: SITE_URL });
+  const stalePage = path.join(rootDir, 'updates', raw.content.slug, 'index.html');
+  assert.equal(fs.existsSync(stalePage), true);
+
+  fs.writeFileSync(path.join(rootDir, 'content', 'updates', 'update.json'), JSON.stringify({ ...raw, archived_at: '2026-08-05T00:00:00Z' }), 'utf8');
+  buildSite({ rootDir, siteUrl: SITE_URL });
+  assert.equal(fs.existsSync(stalePage), false);
+});

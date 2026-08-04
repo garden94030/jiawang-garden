@@ -26,7 +26,7 @@ concurrency:
 jobs:
   validate-sync-publish:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     env:
       SITE_URL: ${{ vars.SITE_URL }}
       SOCIAL_PUBLISH_LIVE: ${{ vars.SOCIAL_PUBLISH_LIVE }}
@@ -65,11 +65,10 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Test before synchronization
-        run: npm test
-
-      - name: Build before synchronization
-        run: npm run build --if-present
+      - name: Test and build before synchronization
+        run: |
+          npm test
+          npm run build
 
       - name: Select safe execution mode
         id: mode
@@ -92,31 +91,74 @@ jobs:
       - name: Synchronize Facebook source
         run: node scripts/sync-facebook.js ${{ steps.mode.outputs.mode }} | tee facebook-sync-summary.json
 
-      - name: Publish pending platforms
+      - name: Build and validate synchronized source
+        run: |
+          npm run build
+          npm test
+
+      - name: Save durable source before cross-posting
+        if: steps.mode.outputs.mode == '--live'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for candidate in content/social-imports.json content/updates updates sitemap.xml robots.txt index.html; do
+            if [ -e "$candidate" ]; then git add -- "$candidate"; fi
+          done
+          if ! git diff --cached --quiet; then
+            git commit -m "content: save Facebook source before cross-posting"
+            git pull --rebase
+            git push
+          fi
+
+      - name: Publish with per-platform delivery checkpoints
         env:
           REQUESTED_PLATFORM: ${{ inputs.platform }}
         run: |
-          args=("${{ steps.mode.outputs.mode }}" "--retry-failed")
-          if [ -n "$REQUESTED_PLATFORM" ]; then args+=("--platform" "$REQUESTED_PLATFORM"); fi
-          node scripts/publish-content.js "${args[@]}" | tee social-publish-summary.json
+          if [ "${{ steps.mode.outputs.mode }}" = "--dry-run" ]; then
+            args=("--dry-run" "--retry-failed")
+            if [ -n "$REQUESTED_PLATFORM" ]; then args+=("--platform" "$REQUESTED_PLATFORM"); fi
+            node scripts/publish-content.js "${args[@]}" | tee social-publish-summary.json
+            exit 0
+          fi
 
-      - name: Build generated site after synchronization
-        run: npm run build --if-present
-
-      - name: Re-run tests before saving changes
-        run: npm test
-
-      - name: Commit generated content when live and changed
-        if: steps.mode.outputs.mode == '--live'
-        run: |
-          for candidate in content/updates updates sitemap.xml robots.txt index.html; do
-            if [ -e "$candidate" ]; then git add -- "$candidate"; fi
-          done
-          if git diff --cached --quiet; then exit 0; fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "content: weekly social sync"
-          git push
+          platforms=(facebook instagram threads youtube)
+          if [ -n "$REQUESTED_PLATFORM" ]; then platforms=("$REQUESTED_PLATFORM"); fi
+
+          for platform in "${platforms[@]}"; do
+            attempt_id="${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}-${platform}"
+            node scripts/publish-content.js --prepare --platform "$platform" --attempt-id "$attempt_id"
+            git add -- content/updates
+            if ! git diff --cached --quiet; then
+              git commit -m "content: prepare $platform delivery"
+              git pull --rebase
+              git push
+            fi
+
+            node scripts/publish-content.js --live --retry-failed --platform "$platform" --attempt-id "$attempt_id" | tee -a social-publish-summary.json
+            git add -- content/updates
+            if ! git diff --cached --quiet; then
+              git commit -m "content: save $platform delivery result"
+              git pull --rebase
+              git push
+            fi
+          done
+
+      - name: Final build and tests
+        run: |
+          npm run build
+          npm test
+
+      - name: Save final generated pages
+        if: steps.mode.outputs.mode == '--live'
+        run: |
+          git add -- updates sitemap.xml robots.txt index.html
+          if ! git diff --cached --quiet; then
+            git commit -m "content: rebuild site after social sync"
+            git pull --rebase
+            git push
+          fi
 
       - name: Write short run summary
         if: always()

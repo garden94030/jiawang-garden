@@ -2,7 +2,7 @@ services:
   - type: web
     name: jiawang-garden
     runtime: node
-    buildCommand: npm ci
+    buildCommand: npm ci && npm run build
     startCommand: node server.js
     healthCheckPath: /healthz
     envVars:

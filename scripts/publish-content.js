@@ -46,6 +46,8 @@ function updatePlatformState(record, platform, result, now, options = {}) {
     delete next.error;
     delete next.upload_url;
   }
+  delete next.upload_url;
+  if (next.status !== 'attempting') delete next.attempt_id;
   if (next.status === 'published') next.published_at = now;
   record.publishing[platform] = next;
   record.updated_at = now;
@@ -56,19 +58,23 @@ async function publishRecord(record, options = {}) {
   const platforms = options.platforms || SUPPORTED_PLATFORMS;
   const publishers = options.publishers || defaultPublishers;
   const env = options.env || process.env;
-  const dryRun = options.dryRun !== false || options.allowLive !== true;
+  const prepareOnly = options.prepareOnly === true;
+  const dryRun = prepareOnly ? false : (options.dryRun !== false || options.allowLive !== true);
   const nowFactory = options.now || (() => new Date().toISOString());
   const results = {};
-  const copy = await createCopy(record, {
-    enabled: options.aiEnabled === true,
-    generate: options.generateCopy,
-    model: env.AI_COPY_MODEL,
-    siteUrl: env.SITE_URL,
-  });
+  const attemptId = String(options.attemptId || '').trim();
+  const copy = prepareOnly ? null : await createCopy(record, {
+      enabled: options.aiEnabled === true,
+      generate: options.generateCopy,
+      model: env.AI_COPY_MODEL,
+      siteUrl: env.SITE_URL,
+    });
 
   for (const platform of platforms) {
     const disposition = platformDisposition(record, platform, {
       retryFailed: options.retryFailed === true,
+      resumeAttempting: !prepareOnly,
+      attemptId,
     });
 
     if (disposition.action === 'none') {
@@ -97,12 +103,31 @@ async function publishRecord(record, options = {}) {
       continue;
     }
 
+    if (prepareOnly) {
+      const result = { status: 'attempting', reason: 'prepared_for_delivery', attempt_id: attemptId };
+      results[platform] = { status: 'prepared', attempted: false, attempt_id: attemptId };
+      updatePlatformState(record, platform, result, nowFactory());
+      if (typeof options.persist === 'function') await options.persist(record);
+      continue;
+    }
+
     const adapter = publishers[platform];
     if (!adapter || typeof adapter.publish !== 'function') {
       const result = { status: 'skipped', reason: 'not_configured' };
       results[platform] = { ...result, attempted: false };
       if (!dryRun) updatePlatformState(record, platform, result, nowFactory());
       continue;
+    }
+
+    if (!dryRun && currentPlatformState(record, platform).status !== 'attempting') {
+      const attempting = { status: 'attempting', reason: 'delivery_in_progress', attempt_id: attemptId };
+      updatePlatformState(record, platform, attempting, nowFactory());
+      try {
+        if (typeof options.persist === 'function') await options.persist(record);
+      } catch (error) {
+        results[platform] = { status: 'failed', reason: 'state_persist_failed', attempted: false };
+        continue;
+      }
     }
 
     try {
@@ -120,12 +145,16 @@ async function publishRecord(record, options = {}) {
       });
       results[platform] = { ...result, attempted: result.status !== 'dry_run' };
       if (!dryRun && result.status !== 'dry_run') {
-        updatePlatformState(record, platform, result, nowFactory());
+        updatePlatformState(record, platform, result, nowFactory(), { incrementAttempt: false });
+        if (typeof options.persist === 'function') await options.persist(record);
       }
     } catch (error) {
-      const result = { status: 'failed', reason: safeError(error) };
+      const result = { status: 'uncertain', reason: 'delivery_result_unknown', error: safeError(error) };
       results[platform] = { ...result, attempted: true };
-      if (!dryRun) updatePlatformState(record, platform, result, nowFactory());
+      if (!dryRun) {
+        updatePlatformState(record, platform, result, nowFactory(), { incrementAttempt: false });
+        if (typeof options.persist === 'function') await options.persist(record);
+      }
     }
   }
 
@@ -161,20 +190,22 @@ async function publishAll(options = {}) {
   const runs = [];
   for (const file of files) runs.push(await publishFile(file, options));
   return {
-    dry_run: options.dryRun !== false || options.allowLive !== true,
+    dry_run: options.prepareOnly === true ? false : (options.dryRun !== false || options.allowLive !== true),
     files: runs.length,
     runs,
   };
 }
 
 function parseArgs(argv) {
-  const options = { dryRun: true, retryFailed: false };
+  const options = { dryRun: true, retryFailed: false, prepareOnly: false };
   const platforms = [];
   for (let index = 0; index < argv.length; index += 1) {
     const value = argv[index];
     if (value === '--live') options.dryRun = false;
     else if (value === '--dry-run') options.dryRun = true;
+    else if (value === '--prepare') options.prepareOnly = true;
     else if (value === '--retry-failed') options.retryFailed = true;
+    else if (value === '--attempt-id' && argv[index + 1]) options.attemptId = argv[++index];
     else if (value === '--platform' && argv[index + 1]) platforms.push(argv[++index]);
     else if (value.startsWith('--platform=')) platforms.push(value.slice('--platform='.length));
     else if (value === '--content' && argv[index + 1]) options.content = argv[++index];
@@ -186,7 +217,13 @@ function parseArgs(argv) {
     if (invalid.length) throw new Error(`不支援的平台：${invalid.join(', ')}`);
     options.platforms = [...new Set(platforms)];
   }
+  options.attemptId = String(options.attemptId || process.env.PUBLISH_ATTEMPT_ID || '').trim();
+  if (options.prepareOnly && !options.attemptId) throw new Error('--prepare 需要 --attempt-id');
   options.allowLive = options.dryRun === false && process.env.SOCIAL_PUBLISH_LIVE === 'true';
+  if (options.prepareOnly) {
+    options.dryRun = false;
+    options.allowLive = false;
+  }
   if (!options.allowLive) options.dryRun = true;
   return options;
 }

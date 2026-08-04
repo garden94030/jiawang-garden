@@ -22,6 +22,32 @@ function writeAtomic(filePath, content) {
   fs.renameSync(tempPath, filePath);
 }
 
+function replaceGeneratedUpdates(rootDir, generatedPages, updatesIndex) {
+  const target = path.join(rootDir, 'updates');
+  const staging = fs.mkdtempSync(path.join(rootDir, '.updates-build-'));
+  const backup = path.join(rootDir, `.updates-backup-${process.pid}-${Date.now()}`);
+  let movedCurrent = false;
+  try {
+    for (const page of generatedPages) {
+      const relative = path.relative(target, page.filePath);
+      writeAtomic(path.join(staging, relative), page.html);
+    }
+    writeAtomic(path.join(staging, 'index.html'), updatesIndex);
+    if (fs.existsSync(target)) {
+      fs.renameSync(target, backup);
+      movedCurrent = true;
+    }
+    fs.renameSync(staging, target);
+    if (movedCurrent) fs.rmSync(backup, { recursive: true, force: true });
+  } catch (error) {
+    if (!fs.existsSync(target) && movedCurrent && fs.existsSync(backup)) {
+      try { fs.renameSync(backup, target); } catch {}
+    }
+    try { fs.rmSync(staging, { recursive: true, force: true }); } catch {}
+    throw error;
+  }
+}
+
 function rawIsExcluded(raw) {
   const content = raw?.content && typeof raw.content === 'object' ? raw.content : {};
   const status = String(raw?.status || content.status || '').toLowerCase();
@@ -96,8 +122,7 @@ function buildSite({ rootDir = path.resolve(__dirname, '..'), siteUrl = process.
   const updatesIndex = renderUpdatesIndex(updates, normalizedSiteUrl);
 
   // 所有資料完成讀取、正規化及 HTML 產生後才開始覆寫正式檔案。
-  generatedPages.forEach(page => writeAtomic(page.filePath, page.html));
-  writeAtomic(path.join(rootDir, 'updates', 'index.html'), updatesIndex);
+  replaceGeneratedUpdates(rootDir, generatedPages, updatesIndex);
   writeAtomic(homePath, homeHtml);
   writeAtomic(path.join(rootDir, 'robots.txt'), buildRobots(normalizedSiteUrl));
   generateSitemap({ rootDir, siteUrl: normalizedSiteUrl, updates });
@@ -134,5 +159,6 @@ module.exports = {
   buildRobots,
   buildSite,
   loadUpdates,
+  replaceGeneratedUpdates,
   updateHomepage
 };

@@ -67,3 +67,9 @@ test('media type may be derived from MIME without guessing unsupported files', (
   assert.equal(mediaType({ mimeType: 'video/mp4' }), 'video');
   assert.equal(mediaType({ mime_type: 'application/pdf' }), 'unknown');
 });
+
+test('draft imports are held instead of being published to social platforms', () => {
+  const result = validateContent(record({ import: { status: 'draft' } }));
+  assert.equal(result.eligible, false);
+  assert.deepEqual(result.reasons, ['import_draft']);
+});

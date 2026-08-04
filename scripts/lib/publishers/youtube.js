@@ -111,16 +111,6 @@ async function publish(record, context = {}) {
     return { status: 'pending', reason: 'youtube_processing', post_id: existingVideoId, privacy: 'private' };
   }
 
-  const existingUploadUrl = record?.publishing?.youtube?.upload_url;
-  if (existingUploadUrl) {
-    const resumed = await resumeUpload(fetchImpl, existingUploadUrl, bytes, mime);
-    const resumedVideoId = resumed.id;
-    if (!resumedVideoId) throw new Error('youtube_upload_missing_video_id');
-    const state = await processingState(fetchImpl, token, resumedVideoId);
-    if (state === 'processed') return { status: 'published', post_id: resumedVideoId, privacy: 'private' };
-    return { status: 'pending', reason: 'youtube_processing', post_id: resumedVideoId, privacy: 'private' };
-  }
-
   const metadata = buildVideoMetadata(record, context.copy);
   const start = await fetchImpl('https://www.googleapis.com/upload/youtube/v3/videos?uploadType=resumable&part=snippet,status', {
     method: 'POST',
@@ -135,9 +125,8 @@ async function publish(record, context = {}) {
   if (!start.ok) await responseJson(start, 'youtube_upload_session_failed');
   const uploadUrl = start.headers.get('location');
   if (!uploadUrl) throw new Error('youtube_upload_session_missing');
-  if (typeof context.checkpoint === 'function') {
-    await context.checkpoint({ status: 'pending', reason: 'youtube_uploading', upload_url: uploadUrl, privacy: 'private' });
-  }
+  // The resumable upload URL is a capability secret. Keep it only in memory;
+  // the public content repository must never persist or commit it.
 
   const result = await uploadBytes(fetchImpl, uploadUrl, bytes, mime);
   const videoId = result.id;

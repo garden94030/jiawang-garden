@@ -4,7 +4,36 @@ const fs = require('node:fs');
 const path = require('node:path');
 
 const SCHEMA_VERSION = 1;
-const PUBLISHING_STATUSES = new Set(['pending', 'published', 'source', 'skipped', 'failed', 'held']);
+const PUBLISHING_STATUSES = new Set(['pending', 'published', 'source', 'skipped', 'failed', 'held', 'attempting', 'uncertain']);
+const LOCK_STALE_MS = 15 * 60 * 1000;
+
+function acquireManifestLock(manifestPath, now = new Date()) {
+  const lockPath = `${manifestPath}.lock`;
+  fs.mkdirSync(path.dirname(lockPath), { recursive: true });
+  try {
+    const descriptor = fs.openSync(lockPath, 'wx', 0o600);
+    fs.writeFileSync(descriptor, `${process.pid} ${now.toISOString()}\n`, 'utf8');
+    fs.closeSync(descriptor);
+  } catch (error) {
+    if (error.code !== 'EEXIST') throw error;
+    const stat = fs.statSync(lockPath);
+    if (now.getTime() - stat.mtimeMs <= LOCK_STALE_MS) {
+      throw new Error(`manifest is locked: ${lockPath}`);
+    }
+    const stalePath = `${lockPath}.stale-${now.getTime()}`;
+    fs.renameSync(lockPath, stalePath);
+    try { fs.unlinkSync(stalePath); } catch {}
+    return acquireManifestLock(manifestPath, now);
+  }
+  let released = false;
+  return () => {
+    if (released) return;
+    released = true;
+    try { fs.unlinkSync(lockPath); } catch (error) {
+      if (error.code !== 'ENOENT') throw error;
+    }
+  };
+}
 
 function emptyManifest() {
   return {
@@ -204,25 +233,31 @@ function checkDuplicate(manifest, entry) {
   return { duplicate: false, reason: null, entry: null };
 }
 
-function appendImport(manifestPath, entry, now = new Date()) {
-  validateImportEntry(entry);
-  const manifest = readManifest(manifestPath);
-  const duplicate = checkDuplicate(manifest, entry);
-  if (duplicate.duplicate) {
-    return { added: false, ...duplicate, manifest };
-  }
+function appendImport(manifestPath, entry, now = new Date(), options = {}) {
+  const release = options.lockHeld === true ? () => {} : acquireManifestLock(manifestPath, now);
+  try {
+    validateImportEntry(entry);
+    const manifest = readManifest(manifestPath);
+    const duplicate = checkDuplicate(manifest, entry);
+    if (duplicate.duplicate) {
+      return { added: false, ...duplicate, manifest };
+    }
 
-  const next = {
-    ...manifest,
-    updated_at: now.toISOString(),
-    imports: [...manifest.imports, entry],
-  };
-  validateManifest(next);
-  atomicWriteJson(manifestPath, next);
-  return { added: true, duplicate: false, reason: null, entry, manifest: next };
+    const next = {
+      ...manifest,
+      updated_at: now.toISOString(),
+      imports: [...manifest.imports, entry],
+    };
+    validateManifest(next);
+    atomicWriteJson(manifestPath, next);
+    return { added: true, duplicate: false, reason: null, entry, manifest: next };
+  } finally {
+    release();
+  }
 }
 
 module.exports = {
+  acquireManifestLock,
   SCHEMA_VERSION,
   appendImport,
   atomicWriteJson,

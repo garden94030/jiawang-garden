@@ -4,12 +4,19 @@
   "private": true,
   "scripts": {
     "start": "node server.js",
-    "check": "node --check server.js && node --test",
+    "build": "node scripts/build-site.js",
+    "check": "node --check server.js && node --test && npm run build",
     "test": "node --test",
     "content:import": "node scripts/import-local-media.js",
-    "content:import:dry-run": "node scripts/import-local-media.js --dry-run"
+    "content:import:dry-run": "node scripts/import-local-media.js --dry-run",
+    "content:approve": "node scripts/approve-content.js",
+    "social:sync": "node scripts/sync-facebook.js --live",
+    "social:sync:dry-run": "node scripts/sync-facebook.js --dry-run",
+    "social:publish": "node scripts/publish-content.js --live --retry-failed",
+    "social:publish:dry-run": "node scripts/publish-content.js --dry-run"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.1102.0",
     "express": "^5.2.1",
     "multer": "^2.2.0"
   },

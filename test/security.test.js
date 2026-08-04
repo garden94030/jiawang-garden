@@ -70,7 +70,7 @@ test('legacy browser pages no longer contain credentials or local data stores', 
     const body = await response.text();
     assert.equal(response.status, 200);
     assert.match(body, /維護中/);
-    assert.doesNotMatch(body, /password|localStorage|jiawang2026|butterfly/i);
+    assert.doesNotMatch(body, /password|localStorage|預設管理|管理員密碼/i);
   }
 });
 

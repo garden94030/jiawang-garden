@@ -3,6 +3,7 @@ const multer = require('multer');
 const crypto = require('crypto');
 const path = require('path');
 const fs = require('fs');
+const { inspectMedia } = require('./scripts/lib/media');
 
 const PORT = Number(process.env.PORT || 3000);
 const ROOT_DIR = __dirname;
@@ -10,6 +11,7 @@ const DATA_DIR = path.resolve(process.env.DATA_DIR || path.join(ROOT_DIR, 'data'
 const UPLOADS_DIR = path.resolve(process.env.UPLOADS_DIR || path.join(ROOT_DIR, 'uploads'));
 const DATA_FILE = path.join(DATA_DIR, 'shared-data.json');
 const ADMIN_API_TOKEN = process.env.ADMIN_API_TOKEN || '';
+const ADMIN_ENABLED = ADMIN_API_TOKEN.length >= 32;
 const CONTACT_FORM_ENABLED = process.env.CONTACT_FORM_ENABLED === 'true';
 
 fs.mkdirSync(DATA_DIR, { recursive: true });
@@ -66,7 +68,7 @@ function safeTokenEquals(received, expected) {
 }
 
 function requireAdmin(req, res, next) {
-  if (!ADMIN_API_TOKEN) {
+  if (!ADMIN_ENABLED) {
     return res.status(503).json({ success: false, error: '管理功能尚未啟用' });
   }
   const authorization = req.get('authorization') || '';
@@ -132,6 +134,19 @@ function createApp() {
   app.get('/api/photos', (req, res) => res.json(loadData().photos));
 
   app.post('/api/upload', requireAdmin, upload.array('photos', 10), (req, res) => {
+    try {
+      for (const file of req.files || []) {
+        const inspected = inspectMedia(file.path, { maxBytes: 10 * 1024 * 1024 });
+        if (inspected.type !== 'image' || inspected.mime_type !== file.mimetype) {
+          throw new Error('檔案內容與圖片格式不符');
+        }
+      }
+    } catch (error) {
+      for (const file of req.files || []) {
+        try { fs.unlinkSync(file.path); } catch {}
+      }
+      return res.status(400).json({ success: false, error: error.message });
+    }
     const data = loadData();
     const maxId = data.photos.reduce((max, photo) => Math.max(max, Number(photo.id) || 0), 0);
     const now = new Date().toISOString().slice(0, 10);
@@ -202,7 +217,10 @@ function createApp() {
     return res.json({ success: true });
   });
 
-  app.get('/api/messages', requireAdmin, (req, res) => res.json(loadData().messages));
+  app.get('/api/messages', requireAdmin, (req, res) => {
+    res.set('Cache-Control', 'no-store');
+    return res.json(loadData().messages);
+  });
 
   app.post('/api/messages', (req, res) => {
     if (!CONTACT_FORM_ENABLED) {
@@ -283,7 +301,7 @@ function createApp() {
 if (require.main === module) {
   createApp().listen(PORT, '0.0.0.0', () => {
     console.log(`佳旺景觀園藝網站已啟動：http://localhost:${PORT}`);
-    if (!ADMIN_API_TOKEN) console.log('管理寫入功能未啟用（尚未設定 ADMIN_API_TOKEN）');
+    if (!ADMIN_ENABLED) console.log('管理寫入功能未啟用（ADMIN_API_TOKEN 未設定或少於 32 字元）');
     if (!CONTACT_FORM_ENABLED) console.log('線上聯絡表單未啟用（CONTACT_FORM_ENABLED=false）');
   });
 }

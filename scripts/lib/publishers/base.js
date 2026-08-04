@@ -16,6 +16,7 @@ function safeError(error) {
   return String(error?.message || error || 'unknown_error')
     .replace(/access_token=[^&\s]+/gi, 'access_token=[REDACTED]')
     .replace(/Bearer\s+[^\s]+/gi, 'Bearer [REDACTED]')
+    .replace(/https:\/\/www\.googleapis\.com\/upload\/youtube\/[^\s]+/gi, '[REDACTED_YOUTUBE_UPLOAD_URL]')
     .slice(0, 500);
 }
 

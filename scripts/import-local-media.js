@@ -5,6 +5,7 @@ const crypto = require('node:crypto');
 const fs = require('node:fs');
 const path = require('node:path');
 const {
+  acquireManifestLock,
   appendImport,
   atomicWriteJson,
   checkDuplicate,
@@ -200,6 +201,7 @@ function importFolder(folder, configuration) {
     maxBytes,
     now,
     hooks,
+    lockHeld,
   } = configuration;
   const note = readNote(folder.path);
   const files = listMediaFiles(folder.path);
@@ -274,7 +276,7 @@ function importFolder(folder, configuration) {
     createdPaths.push(recordPath);
     if (hooks?.beforeManifestCommit) hooks.beforeManifestCommit({ folder, record, entry: entryDraft });
 
-    const committed = appendImport(manifestPath, entryDraft, now);
+    const committed = appendImport(manifestPath, entryDraft, now, { lockHeld });
     if (!committed.added) {
       cleanupCreated(createdPaths);
       return {
@@ -309,16 +311,23 @@ function importLocalMedia(options = {}) {
   }
   const now = options.now instanceof Date ? options.now : new Date();
   const folders = listInboxFolders(inboxDirectory, options.folder);
-  const results = folders.map(folder => importFolder(folder, {
-    contentDirectory,
-    manifestPath,
-    mediaDirectory,
-    updatesDirectory,
-    dryRun: options.dryRun === true,
-    maxBytes,
-    now,
-    hooks: options.hooks,
-  }));
+  const release = options.dryRun === true ? () => {} : acquireManifestLock(manifestPath, now);
+  let results;
+  try {
+    results = folders.map(folder => importFolder(folder, {
+      contentDirectory,
+      manifestPath,
+      mediaDirectory,
+      updatesDirectory,
+      dryRun: options.dryRun === true,
+      maxBytes,
+      now,
+      hooks: options.hooks,
+      lockHeld: options.dryRun !== true,
+    }));
+  } finally {
+    release();
+  }
   return {
     dry_run: options.dryRun === true,
     inbox: inboxDirectory,

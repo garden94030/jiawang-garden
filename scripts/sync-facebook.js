@@ -4,6 +4,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { graphVersion, safeError } = require('./lib/publishers/base');
+const { createFacebookImporter } = require('./lib/facebook-importer');
 
 const REQUIRED = ['META_GRAPH_API_VERSION', 'FACEBOOK_PAGE_ID', 'FACEBOOK_PAGE_ACCESS_TOKEN'];
 
@@ -148,7 +149,9 @@ function parseArgs(argv, env = process.env) {
 }
 
 if (require.main === module) {
-  syncFacebook(parseArgs(process.argv.slice(2)))
+  const options = parseArgs(process.argv.slice(2));
+  options.importPost = createFacebookImporter({ rootDir: options.rootDir, env: process.env });
+  syncFacebook(options)
     .then((result) => process.stdout.write(`${JSON.stringify(result, null, 2)}\n`))
     .catch((error) => {
       process.stderr.write(`Facebook 同步失敗：${safeError(error)}\n`);

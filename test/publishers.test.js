@@ -7,7 +7,7 @@ const os = require('node:os');
 const path = require('node:path');
 const publishers = require('../scripts/lib/publishers');
 const { buildVideoMetadata } = require('../scripts/lib/publishers/youtube');
-const { publishFile } = require('../scripts/publish-content');
+const { publishFile, updatePlatformState } = require('../scripts/publish-content');
 const { normalizeFacebookPost, syncFacebook } = require('../scripts/sync-facebook');
 
 function imageRecord(source = 'manual') {
@@ -158,4 +158,58 @@ test('single-platform retry updates only the failed platform and is idempotent a
   });
   assert.equal(calls, 1);
   fs.rmSync(root, { recursive: true, force: true });
+});
+
+test('delivery intent is durable before the request and unknown results are never auto-retried', async () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'jiawang-uncertain-'));
+  const file = path.join(root, 'record.json');
+  fs.writeFileSync(file, `${JSON.stringify(imageRecord('manual'), null, 2)}\n`);
+  let calls = 0;
+  const adapters = {
+    threads: {
+      publish: async () => {
+        calls += 1;
+        const checkpoint = JSON.parse(fs.readFileSync(file, 'utf8'));
+        assert.equal(checkpoint.publishing.threads.status, 'attempting');
+        assert.equal(checkpoint.publishing.threads.attempt_id, 'run-1-threads');
+        throw new Error('network response lost');
+      },
+    },
+  };
+  try {
+    await publishFile(file, {
+      allowLive: true,
+      dryRun: false,
+      platforms: ['threads'],
+      publishers: adapters,
+      retryFailed: true,
+      attemptId: 'run-1-threads',
+    });
+    let saved = JSON.parse(fs.readFileSync(file, 'utf8'));
+    assert.equal(saved.publishing.threads.status, 'uncertain');
+    assert.equal(saved.publishing.threads.reason, 'delivery_result_unknown');
+
+    await publishFile(file, {
+      allowLive: true,
+      dryRun: false,
+      platforms: ['threads'],
+      publishers: adapters,
+      retryFailed: true,
+      attemptId: 'run-2-threads',
+    });
+    saved = JSON.parse(fs.readFileSync(file, 'utf8'));
+    assert.equal(saved.publishing.threads.status, 'uncertain');
+    assert.equal(calls, 1);
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('capability upload URLs are stripped from public publishing state', () => {
+  const value = imageRecord();
+  updatePlatformState(value, 'youtube', {
+    status: 'pending',
+    upload_url: 'https://www.googleapis.com/upload/youtube/v3/videos?upload_id=secret',
+  }, '2026-08-04T01:00:00.000Z');
+  assert.equal(value.publishing.youtube.upload_url, undefined);
 });

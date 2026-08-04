@@ -5,6 +5,10 @@ node_modules/
 uploads/*
 !uploads/.gitkeep
 
+# Manual import inbox is local-only; imported records are tracked separately.
+content/inbox/*
+!content/inbox/.gitkeep
+
 # Runtime data
 data/shared-data.json
 
@@ -30,3 +34,7 @@ out/
 
 # Debug
 npm-debug.log*
+
+# Local workflow summaries and resumable capability files are never committed.
+facebook-sync-summary.json
+social-publish-summary.json

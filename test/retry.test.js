@@ -6,6 +6,7 @@ const fs = require('node:fs');
 const os = require('node:os');
 const path = require('node:path');
 const { importLocalMedia, stableContentId } = require('../scripts/import-local-media');
+const { approveContent } = require('../scripts/approve-content');
 const { atomicWriteJson, emptyManifest, readManifest } = require('../scripts/lib/manifest');
 
 const JPEG = Buffer.from([0xff, 0xd8, 0xff, 0xe0, 0x00, 0x04, 0x4a, 0x46, 0x49, 0x46, 0xff, 0xd9]);
@@ -52,6 +53,22 @@ test('dry-run performs validation without changing manifest or content files', (
     assert.equal(fs.readFileSync(path.join(contentDir, 'social-imports.json'), 'utf8'), before);
     assert.equal(fs.existsSync(path.join(contentDir, 'media')), false);
     assert.equal(fs.existsSync(path.join(contentDir, 'updates')), false);
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+});
+
+test('manual content requires an explicit approval before publication', () => {
+  const { root, contentDir, folderName } = fixture();
+  try {
+    const imported = importLocalMedia({ contentDir });
+    assert.equal(imported.results[0].status, 'imported');
+    const contentId = stableContentId(folderName);
+    const approved = approveContent({ rootDir: root, content: contentId, now: new Date('2026-08-04T02:00:00.000Z') });
+    assert.equal(approved.approved, 1);
+    const record = JSON.parse(fs.readFileSync(path.join(contentDir, 'updates', `${contentId}.json`), 'utf8'));
+    assert.equal(record.import.status, 'published');
+    assert.equal(record.import.approved_at, '2026-08-04T02:00:00.000Z');
   } finally {
     fs.rmSync(root, { recursive: true, force: true });
   }

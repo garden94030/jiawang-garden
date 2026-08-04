@@ -15,6 +15,8 @@ const VALID_STATUSES = new Set([
   'skipped',
   'failed',
   'held',
+  'attempting',
+  'uncertain',
 ]);
 
 function sourcePlatform(record) {
@@ -57,6 +59,8 @@ function validateContent(record) {
   if (!String(record.id || '').trim()) reasons.push('missing_content_id');
   if (!sourcePlatform(record)) reasons.push('missing_source_platform');
   if (isSharedFacebookPost(record)) reasons.push('shared_facebook_post');
+  const importStatus = String(record?.import?.status || '').trim().toLowerCase();
+  if (['draft', 'held', 'skipped'].includes(importStatus)) reasons.push(`import_${importStatus}`);
 
   const items = mediaItems(record);
   if (items.length === 0) reasons.push('missing_media');
@@ -94,6 +98,15 @@ function platformDisposition(record, platform, options = {}) {
   }
   if (current.status === 'held') {
     return { action: 'none', status: 'held', reason: current.reason || 'held' };
+  }
+  if (current.status === 'uncertain') {
+    return { action: 'none', status: 'uncertain', reason: current.reason || 'delivery_result_unknown' };
+  }
+  if (current.status === 'attempting') {
+    if (options.resumeAttempting === true && options.attemptId && current.attempt_id === options.attemptId) {
+      return { action: 'publish', status: 'attempting', reason: 'same_attempt' };
+    }
+    return { action: 'none', status: 'attempting', reason: 'previous_attempt_requires_review' };
   }
 
   const validation = validateContent(record);
