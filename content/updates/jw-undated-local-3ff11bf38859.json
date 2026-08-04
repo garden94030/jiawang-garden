@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "id": "jw-undated-local-3ff11bf38859",
+  "source": {
+    "platform": "local",
+    "item_id": "穗花棋盤腳花序發展觀察",
+    "source_id": "local:穗花棋盤腳花序發展觀察",
+    "permalink": null,
+    "published_at": null,
+    "original_text": "穗花棋盤腳花序發展觀察紀錄\n\n三張近照可見下垂花序、綠色花苞與細長粉紅色花絲，呈現不同開展階段。檔名標記為穗花棋盤腳，但本次未進行現場植物鑑定，也不推定拍攝日期與地點。"
+  },
+  "content": {
+    "title": "穗花棋盤腳花序發展觀察紀錄",
+    "summary": "三張近照呈現下垂花序由花苞到開展的外觀，並可見細長粉紅色花絲。",
+    "body": "檔名標記為穗花棋盤腳。照片可見下垂花序、綠色花苞與細長粉紅色花絲，呈現不同開展階段；本次未進行現場植物鑑定，也不推定拍攝日期與地點。",
+    "category": "植物觀察",
+    "species": null,
+    "location": null,
+    "event_date": null,
+    "slug": "穗花棋盤腳花序發展觀察"
+  },
+  "media": [
+    {
+      "id": "media-01",
+      "type": "image",
+      "source_path": "content/inbox/穗花棋盤腳花序發展觀察/穂花棋盤腳.jpg",
+      "storage_path": "content/media/eb7c13665e853b77fb002ddceb1efb380978ce2a6cbd483b9cc9074fa95c8c67.jpg",
+      "storage_url": "/media/eb7c13665e853b77fb002ddceb1efb380978ce2a6cbd483b9cc9074fa95c8c67.jpg",
+      "sha256": "eb7c13665e853b77fb002ddceb1efb380978ce2a6cbd483b9cc9074fa95c8c67",
+      "mime_type": "image/jpeg",
+      "size_bytes": 174870,
+      "alt": "由枝條垂下且排列密集的綠色花苞花序",
+      "width": null,
+      "height": null
+    },
+    {
+      "id": "media-02",
+      "type": "image",
+      "source_path": "content/inbox/穗花棋盤腳花序發展觀察/穂花棋盤腳1.jpg",
+      "storage_path": "content/media/f16065686b3e25350928178edce15d33cebf43936249846f95ab97d94d26f5ef.jpg",
+      "storage_url": "/media/f16065686b3e25350928178edce15d33cebf43936249846f95ab97d94d26f5ef.jpg",
+      "sha256": "f16065686b3e25350928178edce15d33cebf43936249846f95ab97d94d26f5ef",
+      "mime_type": "image/jpeg",
+      "size_bytes": 361236,
+      "alt": "部分花苞開展並伸出粉紅色花絲的下垂花序",
+      "width": null,
+      "height": null
+    },
+    {
+      "id": "media-03",
+      "type": "image",
+      "source_path": "content/inbox/穗花棋盤腳花序發展觀察/穂花棋盤腳2.jpg",
+      "storage_path": "content/media/89ff4e4564d1565649ccdb4e71cc2c0097be3f3e3cc4fd48aad92ee9a13ec08d.jpg",
+      "storage_url": "/media/89ff4e4564d1565649ccdb4e71cc2c0097be3f3e3cc4fd48aad92ee9a13ec08d.jpg",
+      "sha256": "89ff4e4564d1565649ccdb4e71cc2c0097be3f3e3cc4fd48aad92ee9a13ec08d",
+      "mime_type": "image/jpeg",
+      "size_bytes": 305719,
+      "alt": "綠色花苞與細長粉紅色花絲的近距離觀察",
+      "width": null,
+      "height": null
+    }
+  ],
+  "publishing": {
+    "website": {
+      "status": "pending",
+      "url": null
+    },
+    "facebook": {
+      "status": "pending",
+      "post_id": null
+    },
+    "instagram": {
+      "status": "pending",
+      "post_id": null
+    },
+    "threads": {
+      "status": "pending",
+      "post_id": null
+    },
+    "youtube": {
+      "status": "skipped",
+      "post_id": null,
+      "reason": "no_video"
+    }
+  },
+  "import": {
+    "status": "published",
+    "imported_at": "2026-08-04T23:36:22.127Z",
+    "dry_run": false,
+    "approved_at": "2026-08-04T23:37:48.428Z"
+  },
+  "created_at": "2026-08-04T23:36:22.127Z",
+  "updated_at": "2026-08-04T23:37:48.428Z"
+}

@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "id": "jw-undated-local-4216d210b61d",
+  "source": {
+    "platform": "local",
+    "item_id": "水岸落羽松兩期景觀觀察",
+    "source_id": "local:水岸落羽松兩期景觀觀察",
+    "permalink": null,
+    "published_at": null,
+    "original_text": "2024 年 1 月水岸落羽松景觀觀察\n\n影像左下角標示 20240102，可見水岸成列落羽松、樹色與水面倒影。照片本身無法確認拍攝地點，也不推定工程承攬或維護關係；含較近遊客的另一張影像不公開。"
+  },
+  "content": {
+    "title": "2024 年 1 月水岸落羽松景觀觀察",
+    "summary": "影像標示 2024 年 1 月 2 日，可見水岸成列落羽松、樹色與藍天倒影。",
+    "body": "照片左下角標示 20240102，可見水岸成列落羽松、樹色與水面倒影。僅憑影像無法確認確切拍攝地點，也不推定景觀由佳旺規劃、施工或維護。含較近遊客的另一張影像未公開。",
+    "category": "水岸景觀",
+    "species": null,
+    "location": null,
+    "event_date": "2024-01-02",
+    "slug": "2024年1月水岸落羽松景觀觀察"
+  },
+  "media": [
+    {
+      "id": "media-01",
+      "type": "image",
+      "source_path": "content/inbox/水岸落羽松兩期景觀觀察/504085947_2937720419732630_607255809230898251_n.jpg",
+      "storage_path": "content/media/d8385dd85bea6ae3b12e7660ea7ced0f67db64753e492f527b8d50b5640977b3.jpg",
+      "storage_url": "/media/d8385dd85bea6ae3b12e7660ea7ced0f67db64753e492f527b8d50b5640977b3.jpg",
+      "sha256": "d8385dd85bea6ae3b12e7660ea7ced0f67db64753e492f527b8d50b5640977b3",
+      "mime_type": "image/jpeg",
+      "size_bytes": 251250,
+      "alt": "標示 2024 年 1 月 2 日的水岸落羽松與藍天倒影",
+      "width": null,
+      "height": null
+    }
+  ],
+  "publishing": {
+    "website": {
+      "status": "pending",
+      "url": null
+    },
+    "facebook": {
+      "status": "pending",
+      "post_id": null
+    },
+    "instagram": {
+      "status": "pending",
+      "post_id": null
+    },
+    "threads": {
+      "status": "pending",
+      "post_id": null
+    },
+    "youtube": {
+      "status": "skipped",
+      "post_id": null,
+      "reason": "no_video"
+    }
+  },
+  "import": {
+    "status": "published",
+    "imported_at": "2026-08-04T23:36:21.955Z",
+    "dry_run": false,
+    "approved_at": "2026-08-04T23:37:48.326Z"
+  },
+  "created_at": "2026-08-04T23:36:21.955Z",
+  "updated_at": "2026-08-04T23:37:48.326Z"
+}

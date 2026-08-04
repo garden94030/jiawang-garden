@@ -7,7 +7,7 @@
     "source_id": "local:濕地水岸與落羽松季節景觀",
     "permalink": null,
     "published_at": null,
-    "original_text": "濕地水岸與落羽松季節景觀觀察\n\n整理既有影像，呈現水岸樹列、季節性葉色與水面倒影。部分檔名標記為月眉濕地，但本次不宣稱景觀由佳旺規劃、施工或維護，也不推定拍攝日期、水質、生態成效或樹齡。"
+    "original_text": "濕地水岸與落羽松季節景觀觀察\n\n整理既有影像，呈現水岸樹列、季節性葉色與水面倒影。部分檔名標記為月眉濕地，但本次不宣稱景觀由佳旺規劃、施工或維護，也不推定拍攝日期、水質、生態成效或樹齡。近距離可辨識遊客的影像已排除。"
   },
   "content": {
     "title": "濕地水岸與落羽松季節景觀觀察",
@@ -87,19 +87,6 @@
     },
     {
       "id": "media-06",
-      "type": "image",
-      "source_path": "content/inbox/濕地水岸與落羽松季節景觀/月眉濕地落羽松5.jpg",
-      "storage_path": "content/media/a5e0e3f2471f5881fd294e310984c0afdf13d4a7c5f0684019c3ae383c129fc9.jpg",
-      "storage_url": "/media/a5e0e3f2471f5881fd294e310984c0afdf13d4a7c5f0684019c3ae383c129fc9.jpg",
-      "sha256": "a5e0e3f2471f5881fd294e310984c0afdf13d4a7c5f0684019c3ae383c129fc9",
-      "mime_type": "image/jpeg",
-      "size_bytes": 300288,
-      "alt": "濕地水岸落羽松與水面倒影的景觀照片",
-      "width": null,
-      "height": null
-    },
-    {
-      "id": "media-07",
       "type": "image",
       "source_path": "content/inbox/濕地水岸與落羽松季節景觀/落羽松.jpg",
       "storage_path": "content/media/9681008b370eaae89819a9fa694b4c3b72d049fbe4d54ec6c3d128c4285d6d5e.jpg",

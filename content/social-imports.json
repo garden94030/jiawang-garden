@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-08-04T23:02:34.883Z",
+  "updated_at": "2026-08-04T23:36:22.127Z",
   "imports": [
     {
       "content_id": "jw-undated-local-034dd7b938a2",
@@ -64,11 +64,121 @@
         "7f5697174430b0a4764928dfa620cc9b890e1c570d454dea3ff28fb008f85dfd",
         "e694822740f00e34cb41c2834d8ba100f5beb6f63af90b49854fe55762a69dfb",
         "b520c3a965bed07b22a9d5826857e169fc8a6067b47dc9a9fe03301ab9d3f0df",
-        "a5e0e3f2471f5881fd294e310984c0afdf13d4a7c5f0684019c3ae383c129fc9",
         "9681008b370eaae89819a9fa694b4c3b72d049fbe4d54ec6c3d128c4285d6d5e"
       ],
       "record_path": "content/updates/jw-undated-local-5cea96dd4637.json",
       "imported_at": "2026-08-04T23:02:34.883Z"
+    },
+    {
+      "content_id": "jw-undated-local-33f291a8bd2d",
+      "source": {
+        "platform": "local",
+        "item_id": "苗圃育苗與盆栽蘭花觀察",
+        "source_id": "local:苗圃育苗與盆栽蘭花觀察"
+      },
+      "media_sha256": [
+        "219bcf99e3caeb368bfb9f7beeb7b2916caa29c7c7886fc2bce1b23e625242ff",
+        "09747e530f52c6fdb28cea157a84dbde92f65ad7e09424ec242ff8e03c8fd875",
+        "86862e79ad760a174e82342da6616d085e44b0dc2d7edade919b232265674526",
+        "959aeae6819dc92bb45e9aab2b5a9befd2366c3244ffd973a140e91a7e43c576",
+        "3d6a596f6ec7c54cc167db37cb37ac9f210cabc763e7b4ae218e62efdb8b1885"
+      ],
+      "record_path": "content/updates/jw-undated-local-33f291a8bd2d.json",
+      "imported_at": "2026-08-04T23:36:21.809Z"
+    },
+    {
+      "content_id": "jw-undated-local-483e6eecd7d6",
+      "source": {
+        "platform": "local",
+        "item_id": "葉片擬態蝴蝶停棲觀察",
+        "source_id": "local:葉片擬態蝴蝶停棲觀察"
+      },
+      "media_sha256": [
+        "f73e1dbfc4a4127bec7e97ef71cefb8b4a970757d180b31bd659d94be6ae949d"
+      ],
+      "record_path": "content/updates/jw-undated-local-483e6eecd7d6.json",
+      "imported_at": "2026-08-04T23:36:21.880Z"
+    },
+    {
+      "content_id": "jw-undated-local-ea13448faf85",
+      "source": {
+        "platform": "local",
+        "item_id": "綠色幼蟲群聚取食觀察",
+        "source_id": "local:綠色幼蟲群聚取食觀察"
+      },
+      "media_sha256": [
+        "81fdd764589daf14f09b18022782180146e0dd3784fe4e6930bf1b8096067f7a"
+      ],
+      "record_path": "content/updates/jw-undated-local-ea13448faf85.json",
+      "imported_at": "2026-08-04T23:36:21.916Z"
+    },
+    {
+      "content_id": "jw-undated-local-4216d210b61d",
+      "source": {
+        "platform": "local",
+        "item_id": "水岸落羽松兩期景觀觀察",
+        "source_id": "local:水岸落羽松兩期景觀觀察"
+      },
+      "media_sha256": [
+        "d8385dd85bea6ae3b12e7660ea7ced0f67db64753e492f527b8d50b5640977b3"
+      ],
+      "record_path": "content/updates/jw-undated-local-4216d210b61d.json",
+      "imported_at": "2026-08-04T23:36:21.955Z"
+    },
+    {
+      "content_id": "jw-undated-local-36af200e94fd",
+      "source": {
+        "platform": "local",
+        "item_id": "戶外景觀設施與觀察空間",
+        "source_id": "local:戶外景觀設施與觀察空間"
+      },
+      "media_sha256": [
+        "0722e837deec4bf2223b76f6c0d0114ff4b131757449a386c5f1f1a38e2daac0",
+        "77e3cdbc7b1f26b595edddc8f3113b9fb45fe95085f9b820b53b20721f5cc549"
+      ],
+      "record_path": "content/updates/jw-undated-local-36af200e94fd.json",
+      "imported_at": "2026-08-04T23:36:22.004Z"
+    },
+    {
+      "content_id": "jw-undated-local-2c051c0f2f14",
+      "source": {
+        "platform": "local",
+        "item_id": "佳旺苗圃櫻花開花紀錄",
+        "source_id": "local:佳旺苗圃櫻花開花紀錄"
+      },
+      "media_sha256": [
+        "0fd43d858988fe6fc3e6a13d85c51ef9ea1cbc11f900fb2c11d88d16610490ae"
+      ],
+      "record_path": "content/updates/jw-undated-local-2c051c0f2f14.json",
+      "imported_at": "2026-08-04T23:36:22.056Z"
+    },
+    {
+      "content_id": "jw-undated-local-437ced372b0d",
+      "source": {
+        "platform": "local",
+        "item_id": "咬人貓葉片特徵觀察",
+        "source_id": "local:咬人貓葉片特徵觀察"
+      },
+      "media_sha256": [
+        "78a25a4e410c89250ee7e33f3cbc163dcd4cc09ca52ecaa5ec4060a46d5f722a"
+      ],
+      "record_path": "content/updates/jw-undated-local-437ced372b0d.json",
+      "imported_at": "2026-08-04T23:36:22.091Z"
+    },
+    {
+      "content_id": "jw-undated-local-3ff11bf38859",
+      "source": {
+        "platform": "local",
+        "item_id": "穗花棋盤腳花序發展觀察",
+        "source_id": "local:穗花棋盤腳花序發展觀察"
+      },
+      "media_sha256": [
+        "eb7c13665e853b77fb002ddceb1efb380978ce2a6cbd483b9cc9074fa95c8c67",
+        "f16065686b3e25350928178edce15d33cebf43936249846f95ab97d94d26f5ef",
+        "89ff4e4564d1565649ccdb4e71cc2c0097be3f3e3cc4fd48aad92ee9a13ec08d"
+      ],
+      "record_path": "content/updates/jw-undated-local-3ff11bf38859.json",
+      "imported_at": "2026-08-04T23:36:22.127Z"
     }
   ]
 }

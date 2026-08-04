@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "id": "jw-undated-local-ea13448faf85",
+  "source": {
+    "platform": "local",
+    "item_id": "綠色幼蟲群聚取食觀察",
+    "source_id": "local:綠色幼蟲群聚取食觀察",
+    "permalink": null,
+    "published_at": null,
+    "original_text": "綠色幼蟲群聚與葉片取食觀察\n\n影像可見多隻綠色黑頭幼蟲聚集在葉片，周圍有取食造成的缺刻與孔洞。本文不進行物種或寄主植物鑑定，也不推定拍攝日期與地點。"
+  },
+  "content": {
+    "title": "綠色幼蟲群聚與葉片取食觀察",
+    "summary": "多隻綠色黑頭幼蟲聚集在葉片，周圍可見取食造成的缺刻與孔洞。",
+    "body": "照片可見多隻綠色黑頭幼蟲群聚於葉面，葉片邊緣與表面有明顯缺刻及孔洞。本文只記錄可見的取食痕跡，不進行幼蟲或寄主植物鑑定，也不推定拍攝日期與地點。",
+    "category": "昆蟲生態",
+    "species": null,
+    "location": null,
+    "event_date": null,
+    "slug": "綠色幼蟲群聚取食觀察"
+  },
+  "media": [
+    {
+      "id": "media-01",
+      "type": "image",
+      "source_path": "content/inbox/綠色幼蟲群聚取食觀察/548510732_3041356352702369_4877861748462122900_n.jpg",
+      "storage_path": "content/media/81fdd764589daf14f09b18022782180146e0dd3784fe4e6930bf1b8096067f7a.jpg",
+      "storage_url": "/media/81fdd764589daf14f09b18022782180146e0dd3784fe4e6930bf1b8096067f7a.jpg",
+      "sha256": "81fdd764589daf14f09b18022782180146e0dd3784fe4e6930bf1b8096067f7a",
+      "mime_type": "image/jpeg",
+      "size_bytes": 134876,
+      "alt": "多隻綠色黑頭幼蟲群聚在有取食孔洞的葉片上",
+      "width": null,
+      "height": null
+    }
+  ],
+  "publishing": {
+    "website": {
+      "status": "pending",
+      "url": null
+    },
+    "facebook": {
+      "status": "pending",
+      "post_id": null
+    },
+    "instagram": {
+      "status": "pending",
+      "post_id": null
+    },
+    "threads": {
+      "status": "pending",
+      "post_id": null
+    },
+    "youtube": {
+      "status": "skipped",
+      "post_id": null,
+      "reason": "no_video"
+    }
+  },
+  "import": {
+    "status": "published",
+    "imported_at": "2026-08-04T23:36:21.916Z",
+    "dry_run": false,
+    "approved_at": "2026-08-04T23:37:48.301Z"
+  },
+  "created_at": "2026-08-04T23:36:21.916Z",
+  "updated_at": "2026-08-04T23:37:48.301Z"
+}

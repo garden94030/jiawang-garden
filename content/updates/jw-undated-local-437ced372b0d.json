@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "id": "jw-undated-local-437ced372b0d",
+  "source": {
+    "platform": "local",
+    "item_id": "咬人貓葉片特徵觀察",
+    "source_id": "local:咬人貓葉片特徵觀察",
+    "permalink": null,
+    "published_at": null,
+    "original_text": "咬人貓葉片特徵觀察紀錄\n\n近距離影像可見綠色葉片的鋸齒邊緣與表面細毛。檔名標記為咬人貓，但本次未進行現場植物鑑定；不熟悉戶外植物時應避免直接碰觸。"
+  },
+  "content": {
+    "title": "咬人貓葉片特徵觀察紀錄",
+    "summary": "近距離影像可見綠色葉片的鋸齒邊緣與表面細毛，適合作為戶外植物辨識提醒。",
+    "body": "檔名標記為咬人貓；照片可見葉片鋸齒與表面細毛，但本次未進行現場植物鑑定，也不提供觸摸或食用判斷。不熟悉戶外植物時，應避免直接碰觸。",
+    "category": "植物觀察",
+    "species": null,
+    "location": null,
+    "event_date": null,
+    "slug": "咬人貓葉片特徵觀察"
+  },
+  "media": [
+    {
+      "id": "media-01",
+      "type": "image",
+      "source_path": "content/inbox/咬人貓葉片特徵觀察/咬人貓.jpg",
+      "storage_path": "content/media/78a25a4e410c89250ee7e33f3cbc163dcd4cc09ca52ecaa5ec4060a46d5f722a.jpg",
+      "storage_url": "/media/78a25a4e410c89250ee7e33f3cbc163dcd4cc09ca52ecaa5ec4060a46d5f722a.jpg",
+      "sha256": "78a25a4e410c89250ee7e33f3cbc163dcd4cc09ca52ecaa5ec4060a46d5f722a",
+      "mime_type": "image/jpeg",
+      "size_bytes": 153767,
+      "alt": "具有鋸齒邊緣與表面細毛的綠色葉片近照",
+      "width": null,
+      "height": null
+    }
+  ],
+  "publishing": {
+    "website": {
+      "status": "pending",
+      "url": null
+    },
+    "facebook": {
+      "status": "pending",
+      "post_id": null
+    },
+    "instagram": {
+      "status": "pending",
+      "post_id": null
+    },
+    "threads": {
+      "status": "pending",
+      "post_id": null
+    },
+    "youtube": {
+      "status": "skipped",
+      "post_id": null,
+      "reason": "no_video"
+    }
+  },
+  "import": {
+    "status": "published",
+    "imported_at": "2026-08-04T23:36:22.091Z",
+    "dry_run": false,
+    "approved_at": "2026-08-04T23:37:48.403Z"
+  },
+  "created_at": "2026-08-04T23:36:22.091Z",
+  "updated_at": "2026-08-04T23:37:48.403Z"
+}

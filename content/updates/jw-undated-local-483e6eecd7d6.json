@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "id": "jw-undated-local-483e6eecd7d6",
+  "source": {
+    "platform": "local",
+    "item_id": "葉片擬態蝴蝶停棲觀察",
+    "source_id": "local:葉片擬態蝴蝶停棲觀察",
+    "permalink": null,
+    "published_at": null,
+    "original_text": "葉片擬態蝴蝶停棲觀察紀錄\n\n影像可見一隻褐色、翅面近似枯葉紋理的蝴蝶停棲在紅色盆器旁。本文不進行物種鑑定，也不推定拍攝日期與地點。"
+  },
+  "content": {
+    "title": "葉片擬態蝴蝶停棲觀察紀錄",
+    "summary": "一隻褐色、翅面近似枯葉紋理的蝴蝶停棲在紅色盆器旁，呈現自然擬態外觀。",
+    "body": "照片可見一隻褐色蝴蝶停棲在紅色盆器旁，合起的翅面帶有近似枯葉的輪廓與紋理。本文不進行物種鑑定，也不推定拍攝日期、地點或族群狀況。",
+    "category": "蝴蝶生態",
+    "species": null,
+    "location": null,
+    "event_date": null,
+    "slug": "葉片擬態蝴蝶停棲觀察"
+  },
+  "media": [
+    {
+      "id": "media-01",
+      "type": "image",
+      "source_path": "content/inbox/葉片擬態蝴蝶停棲觀察/488808559_2867390526765620_5376117870033788009_n.jpg",
+      "storage_path": "content/media/f73e1dbfc4a4127bec7e97ef71cefb8b4a970757d180b31bd659d94be6ae949d.jpg",
+      "storage_url": "/media/f73e1dbfc4a4127bec7e97ef71cefb8b4a970757d180b31bd659d94be6ae949d.jpg",
+      "sha256": "f73e1dbfc4a4127bec7e97ef71cefb8b4a970757d180b31bd659d94be6ae949d",
+      "mime_type": "image/jpeg",
+      "size_bytes": 270214,
+      "alt": "褐色葉片擬態外觀的蝴蝶停棲在紅色盆器旁",
+      "width": null,
+      "height": null
+    }
+  ],
+  "publishing": {
+    "website": {
+      "status": "pending",
+      "url": null
+    },
+    "facebook": {
+      "status": "pending",
+      "post_id": null
+    },
+    "instagram": {
+      "status": "pending",
+      "post_id": null
+    },
+    "threads": {
+      "status": "pending",
+      "post_id": null
+    },
+    "youtube": {
+      "status": "skipped",
+      "post_id": null,
+      "reason": "no_video"
+    }
+  },
+  "import": {
+    "status": "published",
+    "imported_at": "2026-08-04T23:36:21.880Z",
+    "dry_run": false,
+    "approved_at": "2026-08-04T23:37:48.278Z"
+  },
+  "created_at": "2026-08-04T23:36:21.880Z",
+  "updated_at": "2026-08-04T23:37:48.278Z"
+}

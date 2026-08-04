@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "id": "jw-undated-local-2c051c0f2f14",
+  "source": {
+    "platform": "local",
+    "item_id": "佳旺苗圃櫻花開花紀錄",
+    "source_id": "local:佳旺苗圃櫻花開花紀錄",
+    "permalink": null,
+    "published_at": null,
+    "original_text": "佳旺苗圃櫻花開花影像紀錄\n\n影像可見粉紅色櫻花，右下角標示 20250227 與佳旺苗圃。檔名標記為接枝的昭和櫻開花；本文保留來源資訊，但未進行品種或接枝狀態的現場鑑定。"
+  },
+  "content": {
+    "title": "佳旺苗圃櫻花開花影像紀錄",
+    "summary": "影像可見粉紅色櫻花盛開，右下角標示 2025 年 2 月 27 日與佳旺苗圃。",
+    "body": "檔名標記為接枝的昭和櫻開花，照片右下角亦有 20250227 與佳旺苗圃字樣。本文保留影像與檔名中的來源資訊，但未進行品種或接枝狀態的現場鑑定。",
+    "category": "苗圃園藝",
+    "species": null,
+    "location": null,
+    "event_date": "2025-02-27",
+    "slug": "佳旺苗圃櫻花開花紀錄"
+  },
+  "media": [
+    {
+      "id": "media-01",
+      "type": "image",
+      "source_path": "content/inbox/佳旺苗圃櫻花開花紀錄/接枝的昭和櫻開花.jpg",
+      "storage_path": "content/media/0fd43d858988fe6fc3e6a13d85c51ef9ea1cbc11f900fb2c11d88d16610490ae.jpg",
+      "storage_url": "/media/0fd43d858988fe6fc3e6a13d85c51ef9ea1cbc11f900fb2c11d88d16610490ae.jpg",
+      "sha256": "0fd43d858988fe6fc3e6a13d85c51ef9ea1cbc11f900fb2c11d88d16610490ae",
+      "mime_type": "image/jpeg",
+      "size_bytes": 224346,
+      "alt": "佳旺苗圃枝條上盛開的粉紅色櫻花近照",
+      "width": null,
+      "height": null
+    }
+  ],
+  "publishing": {
+    "website": {
+      "status": "pending",
+      "url": null
+    },
+    "facebook": {
+      "status": "pending",
+      "post_id": null
+    },
+    "instagram": {
+      "status": "pending",
+      "post_id": null
+    },
+    "threads": {
+      "status": "pending",
+      "post_id": null
+    },
+    "youtube": {
+      "status": "skipped",
+      "post_id": null,
+      "reason": "no_video"
+    }
+  },
+  "import": {
+    "status": "published",
+    "imported_at": "2026-08-04T23:36:22.056Z",
+    "dry_run": false,
+    "approved_at": "2026-08-04T23:37:48.377Z"
+  },
+  "created_at": "2026-08-04T23:36:22.056Z",
+  "updated_at": "2026-08-04T23:37:48.377Z"
+}

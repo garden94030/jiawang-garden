@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "id": "jw-undated-local-36af200e94fd",
+  "source": {
+    "platform": "local",
+    "item_id": "戶外景觀設施與觀察空間",
+    "source_id": "local:戶外景觀設施與觀察空間",
+    "permalink": null,
+    "published_at": null,
+    "original_text": "戶外特色造景與遊戲設施影像\n\n整理彩繪磚紋的傳統灶臺造景與蝴蝶造型戶外遊戲設施。照片來自不同檔案，不宣稱兩處為同一地點或由佳旺規劃施工。"
+  },
+  "content": {
+    "title": "戶外特色造景與遊戲設施影像",
+    "summary": "整理傳統灶臺造景與蝴蝶造型遊戲設施兩類戶外景觀元素。",
+    "body": "照片來自不同檔案，可見彩繪磚紋的傳統灶臺造景，以及蝴蝶造型的戶外遊戲設施。影像無法證明兩處為同一地點或由佳旺規劃施工，因此本文僅作戶外特色造景元素的影像整理。",
+    "category": "景觀設施",
+    "species": null,
+    "location": null,
+    "event_date": null,
+    "slug": "戶外特色造景與遊戲設施"
+  },
+  "media": [
+    {
+      "id": "media-01",
+      "type": "image",
+      "source_path": "content/inbox/戶外景觀設施與觀察空間/古早灶臺.jpg",
+      "storage_path": "content/media/0722e837deec4bf2223b76f6c0d0114ff4b131757449a386c5f1f1a38e2daac0.jpg",
+      "storage_url": "/media/0722e837deec4bf2223b76f6c0d0114ff4b131757449a386c5f1f1a38e2daac0.jpg",
+      "sha256": "0722e837deec4bf2223b76f6c0d0114ff4b131757449a386c5f1f1a38e2daac0",
+      "mime_type": "image/jpeg",
+      "size_bytes": 234998,
+      "alt": "彩繪磚紋與拱形爐口的傳統灶臺造景",
+      "width": null,
+      "height": null
+    },
+    {
+      "id": "media-02",
+      "type": "image",
+      "source_path": "content/inbox/戶外景觀設施與觀察空間/蝴蝶造型的遊戲區.jpg",
+      "storage_path": "content/media/77e3cdbc7b1f26b595edddc8f3113b9fb45fe95085f9b820b53b20721f5cc549.jpg",
+      "storage_url": "/media/77e3cdbc7b1f26b595edddc8f3113b9fb45fe95085f9b820b53b20721f5cc549.jpg",
+      "sha256": "77e3cdbc7b1f26b595edddc8f3113b9fb45fe95085f9b820b53b20721f5cc549",
+      "mime_type": "image/jpeg",
+      "size_bytes": 315202,
+      "alt": "戶外空間中的大型蝴蝶造型遊戲設施",
+      "width": null,
+      "height": null
+    }
+  ],
+  "publishing": {
+    "website": {
+      "status": "pending",
+      "url": null
+    },
+    "facebook": {
+      "status": "pending",
+      "post_id": null
+    },
+    "instagram": {
+      "status": "pending",
+      "post_id": null
+    },
+    "threads": {
+      "status": "pending",
+      "post_id": null
+    },
+    "youtube": {
+      "status": "skipped",
+      "post_id": null,
+      "reason": "no_video"
+    }
+  },
+  "import": {
+    "status": "published",
+    "imported_at": "2026-08-04T23:36:22.004Z",
+    "dry_run": false,
+    "approved_at": "2026-08-04T23:37:48.353Z"
+  },
+  "created_at": "2026-08-04T23:36:22.004Z",
+  "updated_at": "2026-08-04T23:37:48.353Z"
+}

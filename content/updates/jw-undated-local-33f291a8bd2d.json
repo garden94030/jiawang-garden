@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "id": "jw-undated-local-33f291a8bd2d",
+  "source": {
+    "platform": "local",
+    "item_id": "苗圃育苗與盆栽蘭花觀察",
+    "source_id": "local:苗圃育苗與盆栽蘭花觀察",
+    "permalink": null,
+    "published_at": null,
+    "original_text": "苗圃育苗與盆栽蘭花觀察紀錄\n\n整理不同批次的苗圃育苗盤、小型盆栽植物與盆栽蘭花影像。照片可見整齊排列的育苗容器，以及粉紅、白色與紫紅色系花朵；不推定品種、拍攝日期、地點或栽培成果。含數字紙卡的展示照不公開。"
+  },
+  "content": {
+    "title": "苗圃育苗與盆栽蘭花觀察紀錄",
+    "summary": "整理苗圃育苗盤、小型盆栽植物與盆栽蘭花影像，呈現育苗容器排列與多種花色紋理。",
+    "body": "影像來自不同檔案批次，可見整齊排列的育苗盤、小型盆栽植物，以及粉紅、白色與紫紅色系的盆栽蘭花。照片本身無法確認拍攝日期、品種、地點或是否為同一次作業，因此本文只記錄影像可見內容，不推定工程或栽培成果。",
+    "category": "苗圃園藝",
+    "species": null,
+    "location": null,
+    "event_date": null,
+    "slug": "苗圃育苗與盆栽蘭花觀察"
+  },
+  "media": [
+    {
+      "id": "media-01",
+      "type": "image",
+      "source_path": "content/inbox/苗圃育苗與盆栽蘭花觀察/487828814_2865329456971727_8874752862100287348_n.jpg",
+      "storage_path": "content/media/219bcf99e3caeb368bfb9f7beeb7b2916caa29c7c7886fc2bce1b23e625242ff.jpg",
+      "storage_url": "/media/219bcf99e3caeb368bfb9f7beeb7b2916caa29c7c7886fc2bce1b23e625242ff.jpg",
+      "sha256": "219bcf99e3caeb368bfb9f7beeb7b2916caa29c7c7886fc2bce1b23e625242ff",
+      "mime_type": "image/jpeg",
+      "size_bytes": 181282,
+      "alt": "戶外苗圃內整齊排列的多盤小型盆栽植物",
+      "width": null,
+      "height": null
+    },
+    {
+      "id": "media-02",
+      "type": "image",
+      "source_path": "content/inbox/苗圃育苗與盆栽蘭花觀察/488540492_2865329510305055_4219539240603514607_n.jpg",
+      "storage_path": "content/media/09747e530f52c6fdb28cea157a84dbde92f65ad7e09424ec242ff8e03c8fd875.jpg",
+      "storage_url": "/media/09747e530f52c6fdb28cea157a84dbde92f65ad7e09424ec242ff8e03c8fd875.jpg",
+      "sha256": "09747e530f52c6fdb28cea157a84dbde92f65ad7e09424ec242ff8e03c8fd875",
+      "mime_type": "image/jpeg",
+      "size_bytes": 643794,
+      "alt": "近距離拍攝苗圃育苗盤中的綠色盆栽植物",
+      "width": null,
+      "height": null
+    },
+    {
+      "id": "media-03",
+      "type": "image",
+      "source_path": "content/inbox/苗圃育苗與盆栽蘭花觀察/504992281_2937916826379656_2880581582466595527_n.jpg",
+      "storage_path": "content/media/86862e79ad760a174e82342da6616d085e44b0dc2d7edade919b232265674526.jpg",
+      "storage_url": "/media/86862e79ad760a174e82342da6616d085e44b0dc2d7edade919b232265674526.jpg",
+      "sha256": "86862e79ad760a174e82342da6616d085e44b0dc2d7edade919b232265674526",
+      "mime_type": "image/jpeg",
+      "size_bytes": 174131,
+      "alt": "紫紅色盆栽蘭花的花瓣與花心近照",
+      "width": null,
+      "height": null
+    },
+    {
+      "id": "media-04",
+      "type": "image",
+      "source_path": "content/inbox/苗圃育苗與盆栽蘭花觀察/505086199_2937917069712965_6026434550882332905_n.jpg",
+      "storage_path": "content/media/959aeae6819dc92bb45e9aab2b5a9befd2366c3244ffd973a140e91a7e43c576.jpg",
+      "storage_url": "/media/959aeae6819dc92bb45e9aab2b5a9befd2366c3244ffd973a140e91a7e43c576.jpg",
+      "sha256": "959aeae6819dc92bb45e9aab2b5a9befd2366c3244ffd973a140e91a7e43c576",
+      "mime_type": "image/jpeg",
+      "size_bytes": 207148,
+      "alt": "白色花瓣帶紫紅色花心的盆栽蘭花近照",
+      "width": null,
+      "height": null
+    },
+    {
+      "id": "media-05",
+      "type": "image",
+      "source_path": "content/inbox/苗圃育苗與盆栽蘭花觀察/505139023_2937917093046296_8068888873209187383_n.jpg",
+      "storage_path": "content/media/3d6a596f6ec7c54cc167db37cb37ac9f210cabc763e7b4ae218e62efdb8b1885.jpg",
+      "storage_url": "/media/3d6a596f6ec7c54cc167db37cb37ac9f210cabc763e7b4ae218e62efdb8b1885.jpg",
+      "sha256": "3d6a596f6ec7c54cc167db37cb37ac9f210cabc763e7b4ae218e62efdb8b1885",
+      "mime_type": "image/jpeg",
+      "size_bytes": 402199,
+      "alt": "粉紅與白色紋理的盆栽蘭花近照",
+      "width": null,
+      "height": null
+    }
+  ],
+  "publishing": {
+    "website": {
+      "status": "pending",
+      "url": null
+    },
+    "facebook": {
+      "status": "pending",
+      "post_id": null
+    },
+    "instagram": {
+      "status": "pending",
+      "post_id": null
+    },
+    "threads": {
+      "status": "pending",
+      "post_id": null
+    },
+    "youtube": {
+      "status": "skipped",
+      "post_id": null,
+      "reason": "no_video"
+    }
+  },
+  "import": {
+    "status": "published",
+    "imported_at": "2026-08-04T23:36:21.809Z",
+    "dry_run": false,
+    "approved_at": "2026-08-04T23:37:48.253Z"
+  },
+  "created_at": "2026-08-04T23:36:21.809Z",
+  "updated_at": "2026-08-04T23:37:48.253Z"
+}

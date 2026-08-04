@@ -7,7 +7,7 @@
 - 專案目錄：`/Users/justin/Documents/佳旺景觀園藝`
 - 工作分支：`codex/facebook-seo-pipeline`
 - 線上分支：`main`
-- 本輪實作 commit：`0f03796`（`feat: publish verified nature updates and harden writes`）
+- 本輪照片上線前基準 commit：`750d200`（`docs: add verified project handover`）
 - 公開網站：<https://jiawang-garden.onrender.com/>
 - 更新總覽：<https://jiawang-garden.onrender.com/updates/>
 - GitHub repository：<https://github.com/garden94030/jiawang-garden>
@@ -25,13 +25,15 @@
 - Facebook Page 官方 API 匯入、S3 相容物件儲存、Facebook／Instagram／Threads／YouTube adapters 已實作；缺少憑證時 fail-closed。
 - 跨平台發送前保存 `attempting`，結果不明標為 `uncertain`，不自動重送。
 - 首頁及更新頁具備 canonical、Open Graph、JSON-LD、品牌 logo、favicon、robots 與 sitemap。
-- 已發布 4 篇有影像證據支持的自然觀察內容，共 20 張照片；未猜測日期、地點、客戶、工程歸屬或未鑑定物種。
+- 已發布 12 篇有影像證據支持的園藝與自然觀察內容，共 34 張照片；本輪新增 8 篇、15 張，未猜測地點、客戶、工程歸屬或未鑑定物種。
+- 本輪明確排除修樹作業、可辨識車牌、疑似聯絡數字紙卡及較近遊客的照片；只移除網站媒體副本，`photos/` 原始檔仍完整保留。
 - Google Ads 正方形標誌已保存於 `public/branding/google-ads-logo-square.png`。
 
 ## 驗證證據
 
 - 本機 `npm test`：46/46 通過。
 - 本機 `npm audit --audit-level=high`：0 vulnerabilities。
+- 目前 34 張網站引用媒體已核對檔案存在與 SHA-256；其中 30 張沒有 EXIF segment，4 張只有空白 ImageDescription tag，未含 GPS pointer、相機廠牌或型號。
 - GitHub Validate（`main`、commit `0f03796`）：<https://github.com/garden94030/jiawang-garden/actions/runs/30958915690>
 - Weekly content sync dry-run（`main`、commit `0f03796`）：<https://github.com/garden94030/jiawang-garden/actions/runs/30958954241>
 - dry-run 沒有進入 live；缺少 Meta 憑證時 Facebook 同步結果為 `not_configured`。
@@ -62,8 +64,9 @@
 
 - Repository 目前是 PUBLIC。改 private 前需確認 Render 對私有 repository 的存取安排。
 - 遠端 `claude/amazing-newton` 是無關分支；未取得明確刪除授權前保留。
-- `photos/` 仍有未整理的原始照片，另有 `exec-*.png` 合成圖。不可使用 `git add .`、不可批次刪除；每次只加入已審核的精確路徑。
-- 含工作人員的「颱風過後的修樹工程」照片尚未發布，需先確認肖像同意及是否確為佳旺承攬。
+- `photos/` 仍有原始照片與 `exec-*.png` 合成圖。不可使用 `git add .`、不可批次刪除；每次只加入已審核的精確路徑。
+- 使用者已於 2026-08-05 明確決定「颱風過後的修樹工程」全組不發布，原因是照片中的作業人員未配戴安全帽；後續不得自動納入網站或跨平台佇列。
+- `30米長的植物觀察步道.jpg` 有可辨識車牌、`505238076_...jpg` 邊緣有數字紙卡、`504654955_...jpg` 與 `月眉濕地落羽松5.jpg` 有較近遊客，均未公開。
 
 ## 接續命令
 
