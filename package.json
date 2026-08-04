@@ -3,12 +3,15 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "check": "node --check server.js && node --test",
+    "test": "node --test",
+    "content:import": "node scripts/import-local-media.js",
+    "content:import:dry-run": "node scripts/import-local-media.js --dry-run"
   },
   "dependencies": {
-    "cors": "^2.8.6",
     "express": "^5.2.1",
-    "multer": "^2.1.1"
+    "multer": "^2.2.0"
   },
   "engines": {
     "node": ">=18.0.0"

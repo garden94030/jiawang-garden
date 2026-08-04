@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jiawang-garden.onrender.com/sitemap.xml

@@ -5,6 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>佳旺景觀園藝 — 蝴蝶生態 ｜ 景觀設計 ｜ 自然教育</title>
   <meta name="description" content="佳旺景觀園藝以蝴蝶生態為核心，提供景觀園藝設計、國小蝴蝶生態教學導覽、台灣蝴蝶種類賞析等服務。蝴蝶達人劉阿來，從討厭到精通。" />
+  <link rel="canonical" href="https://jiawang-garden.onrender.com/" />
+  <meta property="og:locale" content="zh_TW" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="佳旺景觀園藝" />
+  <meta property="og:title" content="佳旺景觀園藝｜蝴蝶生態、景觀設計與自然教育" />
+  <meta property="og:description" content="以蝴蝶生態為核心的景觀園藝、生態教學與自然教育服務。" />
+  <meta property="og:url" content="https://jiawang-garden.onrender.com/" />
+  <meta property="og:image" content="https://jiawang-garden.onrender.com/og.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "佳旺景觀園藝工程行",
+    "url": "https://jiawang-garden.onrender.com/",
+    "description": "蝴蝶生態、景觀園藝與自然教育服務"
+  }
+  </script>
   <style>
     /* === Reset & Base === */
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
@@ -235,6 +253,23 @@
     @media(min-width:640px) { .gallery-grid { grid-template-columns:repeat(3,1fr); } }
     @media(min-width:1024px) { .gallery-grid { grid-template-columns:repeat(4,1fr); } }
 
+    /* === 最新消息 === */
+    .updates-home-section { background:#fff; }
+    .updates-home-grid { display:grid; gap:18px; }
+    .update-card { background:#fff; border:1px solid rgba(149,213,178,.4); border-radius:20px; overflow:hidden; box-shadow:0 3px 16px rgba(27,67,50,.06); }
+    .update-card > a { display:block; }
+    .update-card img, .update-card .placeholder { display:block; width:100%; height:190px; object-fit:cover; }
+    .update-card .placeholder { display:grid; place-items:center; background:var(--leaf-light); font-size:48px; }
+    .update-card-body { padding:18px; }
+    .update-card-body .meta { color:#888; font-size:12px; }
+    .update-card-body h3 { color:var(--primary-dark); font-size:18px; line-height:1.45; margin:5px 0 8px; }
+    .update-card-body p { color:#666; font-size:14px; margin-bottom:10px; }
+    .update-card-body > a { color:var(--primary); font-size:13px; font-weight:700; }
+    .updates-empty { padding:28px; text-align:center; background:var(--cream); border:1px solid var(--cream-dark); border-radius:20px; color:#666; }
+    .updates-empty a, .updates-more a { color:var(--primary); font-weight:700; }
+    .updates-more { text-align:center; margin-top:24px; }
+    @media(min-width:640px) { .updates-home-grid { grid-template-columns:repeat(3,1fr); } }
+
     /* === Contact === */
     .contact-section { background:#fff; }
     .contact-grid { display:grid; gap:28px; }
@@ -309,6 +344,7 @@
         <a href="#services" class="nav-link">服務項目</a>
         <a href="#butterflies" class="nav-link">蝴蝶圖鑑</a>
         <a href="#education" class="nav-link">生態教學</a>
+        <a href="#updates" class="nav-link">最新消息</a>
         <a href="#gallery" class="nav-link">蝴蝶相簿</a>
         <a href="#contact" class="nav-link">聯絡我們</a>
         <a href="#contact" class="nav-cta">預約諮詢</a>
@@ -324,6 +360,7 @@
       <a href="#services" onclick="toggleMenu()">服務項目</a>
       <a href="#butterflies" onclick="toggleMenu()">蝴蝶圖鑑</a>
       <a href="#education" onclick="toggleMenu()">生態教學</a>
+      <a href="#updates" onclick="toggleMenu()">最新消息</a>
       <a href="#gallery" onclick="toggleMenu()">蝴蝶相簿</a>
       <a href="#contact" onclick="toggleMenu()">聯絡我們</a>
       <a href="#contact" onclick="toggleMenu()" class="m-cta">預約諮詢</a>
@@ -500,7 +537,24 @@
       </div>
       <div class="gallery-filters" id="galleryFilters"></div>
       <div class="gallery-grid no-save" id="galleryGrid" oncontextmenu="return false"></div>
-      <div class="gallery-notice">🔒 照片版權所有 佳旺景觀園藝｜已啟用防下載保護</div>
+      <div class="gallery-notice">照片版權所有 佳旺景觀園藝｜如需使用請先取得授權</div>
+    </div>
+  </section>
+
+  <!-- 最新消息：內容由 scripts/build-site.js 靜態產生，關閉 JavaScript 仍可讀取 -->
+  <section class="section updates-home-section" id="updates">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-icon anim-wiggle">🌱</div>
+        <h2 class="section-title">最新消息與更新紀錄</h2>
+        <div class="section-bar"></div>
+        <p class="section-desc">園藝工程、蝴蝶生態、自然教育及活動紀錄</p>
+      </div>
+      <div id="updatesList">
+        <!-- UPDATES_LIST_START -->
+        <div class="updates-empty"><p>目前尚無公開更新，之後會在這裡整理園藝與蝴蝶生態紀錄。</p><a href="/updates/">查看更新頁</a></div>
+        <!-- UPDATES_LIST_END -->
+      </div>
     </div>
   </section>
 
@@ -536,12 +590,12 @@
         <div>
           <form class="contact-form" id="contactForm">
             <div class="form-row form-row-2">
-              <div><label class="form-label">姓名 *</label><input type="text" class="form-input" placeholder="您的姓名" required></div>
-              <div><label class="form-label">電話</label><input type="tel" class="form-input" placeholder="聯絡電話"></div>
+              <div><label class="form-label" for="contactName">姓名 *</label><input id="contactName" name="name" type="text" class="form-input" placeholder="您的姓名" maxlength="80" required></div>
+              <div><label class="form-label" for="contactPhone">電話</label><input id="contactPhone" name="phone" type="tel" class="form-input" placeholder="聯絡電話" maxlength="40"></div>
             </div>
-            <div class="form-row"><div><label class="form-label">Email *</label><input type="email" class="form-input" placeholder="your@email.com" required></div></div>
-            <div class="form-row"><div><label class="form-label">諮詢項目</label><select class="form-input form-select"><option>景觀園藝設計</option><option>蝴蝶生態教學</option><option>校園綠美化工程</option><option>生態工程顧問</option><option>其他</option></select></div></div>
-            <div class="form-row"><div><label class="form-label">訊息內容 *</label><textarea class="form-input" rows="4" placeholder="請描述您的需求..." required style="resize:none"></textarea></div></div>
+            <div class="form-row"><div><label class="form-label" for="contactEmail">Email *</label><input id="contactEmail" name="email" type="email" class="form-input" placeholder="your@email.com" maxlength="160" required></div></div>
+            <div class="form-row"><div><label class="form-label" for="contactSubject">諮詢項目</label><select id="contactSubject" name="subject" class="form-input form-select"><option>景觀園藝設計</option><option>蝴蝶生態教學</option><option>校園綠美化工程</option><option>生態工程顧問</option><option>其他</option></select></div></div>
+            <div class="form-row"><div><label class="form-label" for="contactMessage">訊息內容 *</label><textarea id="contactMessage" name="message" class="form-input" rows="4" placeholder="請描述您的需求..." maxlength="2000" required style="resize:none"></textarea></div></div>
             <button type="submit" class="form-submit">🦋 送出訊息</button>
             <div id="formStatus"></div>
           </form>
@@ -570,6 +624,7 @@
             <li><a href="#services"><span class="dot">●</span>服務項目</a></li>
             <li><a href="#butterflies"><span class="dot">●</span>蝴蝶圖鑑</a></li>
             <li><a href="#education"><span class="dot">●</span>生態教學</a></li>
+            <li><a href="#updates"><span class="dot">●</span>最新消息</a></li>
             <li><a href="#gallery"><span class="dot">●</span>蝴蝶相簿</a></li>
           </ul>
         </div>
@@ -708,9 +763,28 @@
     });
 
     /* === Form === */
-    document.getElementById('contactForm').addEventListener('submit',e=>{
+    document.getElementById('contactForm').addEventListener('submit',async e=>{
       e.preventDefault();
-      document.getElementById('formStatus').innerHTML='<div class="form-status" style="background:rgba(149,213,178,.2);color:var(--primary)">✅ 訊息已送出，我們會盡快與您聯繫！</div>';
+      const form=e.currentTarget;
+      const status=document.getElementById('formStatus');
+      const button=form.querySelector('button[type="submit"]');
+      button.disabled=true;
+      status.innerHTML='<div class="form-status">訊息送出中…</div>';
+      try{
+        const response=await fetch('/api/messages',{
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify(Object.fromEntries(new FormData(form)))
+        });
+        const result=await response.json();
+        if(!response.ok||!result.success)throw new Error(result.error||'送出失敗');
+        form.reset();
+        status.innerHTML='<div class="form-status" style="background:rgba(149,213,178,.2);color:var(--primary)">✅ 訊息已送出，我們會盡快與您聯繫！</div>';
+      }catch(error){
+        status.innerHTML='<div class="form-status" style="background:rgba(231,111,81,.12);color:var(--warm-dark)">⚠️ '+error.message+'。您也可以直接來電聯絡。</div>';
+      }finally{
+        button.disabled=false;
+      }
     });
   </script>
 </body>

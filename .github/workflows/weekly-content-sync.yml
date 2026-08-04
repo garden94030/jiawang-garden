@@ -1,0 +1,130 @@
+name: Weekly content sync
+
+on:
+  schedule:
+    - cron: '0 9 * * 1'
+      timezone: 'Asia/Taipei'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: '只檢查，不同步或發布'
+        required: true
+        default: true
+        type: boolean
+      platform:
+        description: '只重試單一平台（facebook/instagram/threads/youtube；留空為全部）'
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: weekly-content-sync
+  cancel-in-progress: false
+
+jobs:
+  validate-sync-publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      SITE_URL: ${{ vars.SITE_URL }}
+      SOCIAL_PUBLISH_LIVE: ${{ vars.SOCIAL_PUBLISH_LIVE }}
+      META_GRAPH_API_VERSION: ${{ vars.META_GRAPH_API_VERSION }}
+      FACEBOOK_PAGE_ID: ${{ secrets.FACEBOOK_PAGE_ID }}
+      FACEBOOK_PAGE_ACCESS_TOKEN: ${{ secrets.FACEBOOK_PAGE_ACCESS_TOKEN }}
+      INSTAGRAM_ACCOUNT_ID: ${{ secrets.INSTAGRAM_ACCOUNT_ID }}
+      INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+      THREADS_USER_ID: ${{ secrets.THREADS_USER_ID }}
+      THREADS_ACCESS_TOKEN: ${{ secrets.THREADS_ACCESS_TOKEN }}
+      YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+      YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+      YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+      OBJECT_STORAGE_ENDPOINT: ${{ secrets.OBJECT_STORAGE_ENDPOINT }}
+      OBJECT_STORAGE_REGION: ${{ vars.OBJECT_STORAGE_REGION }}
+      OBJECT_STORAGE_BUCKET: ${{ secrets.OBJECT_STORAGE_BUCKET }}
+      OBJECT_STORAGE_ACCESS_KEY_ID: ${{ secrets.OBJECT_STORAGE_ACCESS_KEY_ID }}
+      OBJECT_STORAGE_SECRET_ACCESS_KEY: ${{ secrets.OBJECT_STORAGE_SECRET_ACCESS_KEY }}
+      OBJECT_STORAGE_PUBLIC_BASE_URL: ${{ vars.OBJECT_STORAGE_PUBLIC_BASE_URL }}
+      AI_COPY_ENABLED: ${{ vars.AI_COPY_ENABLED }}
+      AI_COPY_PROVIDER: ${{ vars.AI_COPY_PROVIDER }}
+      AI_COPY_MODEL: ${{ vars.AI_COPY_MODEL }}
+      AI_COPY_API_KEY: ${{ secrets.AI_COPY_API_KEY }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Test before synchronization
+        run: npm test
+
+      - name: Build before synchronization
+        run: npm run build --if-present
+
+      - name: Select safe execution mode
+        id: mode
+        env:
+          REQUESTED_DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          mode="--dry-run"
+          reason="dry_run_requested_or_not_enabled"
+          if [ "$GITHUB_EVENT_NAME" = "schedule" ] || [ "$REQUESTED_DRY_RUN" = "false" ]; then
+            if [ "$SOCIAL_PUBLISH_LIVE" = "true" ] && [ -n "$FACEBOOK_PAGE_ID" ] && [ -n "$FACEBOOK_PAGE_ACCESS_TOKEN" ] && [ -n "$META_GRAPH_API_VERSION" ]; then
+              mode="--live"
+              reason="explicit_live_configuration"
+            else
+              reason="missing_live_switch_or_facebook_secrets"
+            fi
+          fi
+          echo "mode=$mode" >> "$GITHUB_OUTPUT"
+          echo "reason=$reason" >> "$GITHUB_OUTPUT"
+
+      - name: Synchronize Facebook source
+        run: node scripts/sync-facebook.js ${{ steps.mode.outputs.mode }} | tee facebook-sync-summary.json
+
+      - name: Publish pending platforms
+        env:
+          REQUESTED_PLATFORM: ${{ inputs.platform }}
+        run: |
+          args=("${{ steps.mode.outputs.mode }}" "--retry-failed")
+          if [ -n "$REQUESTED_PLATFORM" ]; then args+=("--platform" "$REQUESTED_PLATFORM"); fi
+          node scripts/publish-content.js "${args[@]}" | tee social-publish-summary.json
+
+      - name: Build generated site after synchronization
+        run: npm run build --if-present
+
+      - name: Re-run tests before saving changes
+        run: npm test
+
+      - name: Commit generated content when live and changed
+        if: steps.mode.outputs.mode == '--live'
+        run: |
+          for candidate in content/updates updates sitemap.xml robots.txt index.html; do
+            if [ -e "$candidate" ]; then git add -- "$candidate"; fi
+          done
+          if git diff --cached --quiet; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "content: weekly social sync"
+          git push
+
+      - name: Write short run summary
+        if: always()
+        run: |
+          {
+            echo "## 每週內容同步"
+            echo "- 模式：${{ steps.mode.outputs.mode }}"
+            echo "- 原因：${{ steps.mode.outputs.reason }}"
+            if [ -f facebook-sync-summary.json ]; then echo "- Facebook 同步摘要已產生"; fi
+            if [ -f social-publish-summary.json ]; then echo "- 多平台發布摘要已產生"; fi
+          } >> "$GITHUB_STEP_SUMMARY"
