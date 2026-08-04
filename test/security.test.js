@@ -10,7 +10,7 @@ process.env.UPLOADS_DIR = path.join(temporaryRoot, 'uploads');
 delete process.env.ADMIN_API_TOKEN;
 process.env.CONTACT_FORM_ENABLED = 'false';
 
-const { createApp } = require('../server');
+const { createApp, normalizeData, writeConfiguration } = require('../server');
 
 let server;
 let baseUrl;
@@ -64,6 +64,35 @@ test('contact form cannot claim success before durable delivery is enabled', asy
   assert.equal((await response.json()).success, false);
 });
 
+test('runtime writes require the explicit durable storage gate', () => {
+  const token = 'x'.repeat(32);
+  assert.deepEqual(writeConfiguration({
+    ADMIN_API_TOKEN: token,
+    CONTACT_FORM_ENABLED: 'true',
+    DURABLE_WRITES_ENABLED: 'false',
+  }), {
+    durableWritesEnabled: false,
+    adminEnabled: false,
+    contactFormEnabled: false,
+  });
+  assert.deepEqual(writeConfiguration({
+    ADMIN_API_TOKEN: token,
+    CONTACT_FORM_ENABLED: 'true',
+    DURABLE_WRITES_ENABLED: 'true',
+  }), {
+    durableWritesEnabled: true,
+    adminEnabled: true,
+    contactFormEnabled: true,
+  });
+});
+
+test('parseable runtime data with the wrong schema fails closed', () => {
+  assert.deepEqual(normalizeData({ photos: [], messages: [] }), { photos: [], messages: [] });
+  assert.throws(() => normalizeData({ photos: {}, messages: [] }), /photos 與 messages 必須是陣列/);
+  assert.throws(() => normalizeData({ photos: [], messages: null }), /photos 與 messages 必須是陣列/);
+  assert.throws(() => normalizeData([]), /根資料必須是物件/);
+});
+
 test('legacy browser pages no longer contain credentials or local data stores', async () => {
   for (const route of ['/admin.html', '/upload.html']) {
     const response = await fetch(`${baseUrl}${route}`);
@@ -80,6 +109,8 @@ test('homepage includes canonical and Organization metadata', async () => {
   assert.equal(response.status, 200);
   assert.match(body, /rel="canonical"/);
   assert.match(body, /"@type": "Organization"/);
+  assert.match(body, /"logo": "https:\/\/jiawang-garden\.onrender\.com\/branding\/google-ads-logo-square\.png"/);
+  assert.match(body, /rel="icon"[^>]+google-ads-logo-square\.png/);
   assert.match(body, /gardenjiawang@gmail\.com/);
   assert.match(body, /mailto:gardenjiawang@gmail\.com/);
   assert.match(body, /facebook\.com\/profile\.php\?id=61592853779683/);
@@ -89,6 +120,12 @@ test('homepage includes canonical and Organization metadata', async () => {
 
 test('social preview image is publicly available', async () => {
   const response = await fetch(`${baseUrl}/og.png`);
+  assert.equal(response.status, 200);
+  assert.equal(response.headers.get('content-type'), 'image/png');
+});
+
+test('business logo is publicly available', async () => {
+  const response = await fetch(`${baseUrl}/branding/google-ads-logo-square.png`);
   assert.equal(response.status, 200);
   assert.equal(response.headers.get('content-type'), 'image/png');
 });

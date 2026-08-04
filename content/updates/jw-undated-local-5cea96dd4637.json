@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "id": "jw-undated-local-5cea96dd4637",
+  "source": {
+    "platform": "local",
+    "item_id": "濕地水岸與落羽松季節景觀",
+    "source_id": "local:濕地水岸與落羽松季節景觀",
+    "permalink": null,
+    "published_at": null,
+    "original_text": "濕地水岸與落羽松季節景觀觀察\n\n整理既有影像，呈現水岸樹列、季節性葉色與水面倒影。部分檔名標記為月眉濕地，但本次不宣稱景觀由佳旺規劃、施工或維護，也不推定拍攝日期、水質、生態成效或樹齡。"
+  },
+  "content": {
+    "title": "濕地水岸與落羽松季節景觀觀察",
+    "summary": "整理既有影像，呈現濕地水岸樹列、落羽松的季節葉色與水面倒影。",
+    "body": "照片呈現水岸樹列、落羽松的季節性葉色與水面倒影。部分檔名標記為月眉濕地，但本次不宣稱景觀由佳旺規劃、施工或維護，也不推定拍攝日期、水質、生態成效或樹齡。",
+    "category": "景觀觀察",
+    "species": null,
+    "location": null,
+    "event_date": null,
+    "slug": "濕地水岸與落羽松季節景觀"
+  },
+  "media": [
+    {
+      "id": "media-01",
+      "type": "image",
+      "source_path": "content/inbox/濕地水岸與落羽松季節景觀/月眉濕地落羽松.jpg",
+      "storage_path": "content/media/ee41e2689863aa43f76e2945b3729017d686d45d8c5934d0f843ad76ca8349dc.jpg",
+      "storage_url": "/media/ee41e2689863aa43f76e2945b3729017d686d45d8c5934d0f843ad76ca8349dc.jpg",
+      "sha256": "ee41e2689863aa43f76e2945b3729017d686d45d8c5934d0f843ad76ca8349dc",
+      "mime_type": "image/jpeg",
+      "size_bytes": 270870,
+      "alt": "濕地水岸落羽松與水面倒影的景觀照片",
+      "width": null,
+      "height": null
+    },
+    {
+      "id": "media-02",
+      "type": "image",
+      "source_path": "content/inbox/濕地水岸與落羽松季節景觀/月眉濕地落羽松1.jpg",
+      "storage_path": "content/media/b553ff2403488a5f2167b17515f5a95ae05f41bc21197d03223973cc9b76cd93.jpg",
+      "storage_url": "/media/b553ff2403488a5f2167b17515f5a95ae05f41bc21197d03223973cc9b76cd93.jpg",
+      "sha256": "b553ff2403488a5f2167b17515f5a95ae05f41bc21197d03223973cc9b76cd93",
+      "mime_type": "image/jpeg",
+      "size_bytes": 220543,
+      "alt": "濕地水岸落羽松與水面倒影的景觀照片",
+      "width": null,
+      "height": null
+    },
+    {
+      "id": "media-03",
+      "type": "image",
+      "source_path": "content/inbox/濕地水岸與落羽松季節景觀/月眉濕地落羽松2.jpg",
+      "storage_path": "content/media/7f5697174430b0a4764928dfa620cc9b890e1c570d454dea3ff28fb008f85dfd.jpg",
+      "storage_url": "/media/7f5697174430b0a4764928dfa620cc9b890e1c570d454dea3ff28fb008f85dfd.jpg",
+      "sha256": "7f5697174430b0a4764928dfa620cc9b890e1c570d454dea3ff28fb008f85dfd",
+      "mime_type": "image/jpeg",
+      "size_bytes": 272295,
+      "alt": "濕地水岸落羽松與水面倒影的景觀照片",
+      "width": null,
+      "height": null
+    },
+    {
+      "id": "media-04",
+      "type": "image",
+      "source_path": "content/inbox/濕地水岸與落羽松季節景觀/月眉濕地落羽松3.jpg",
+      "storage_path": "content/media/e694822740f00e34cb41c2834d8ba100f5beb6f63af90b49854fe55762a69dfb.jpg",
+      "storage_url": "/media/e694822740f00e34cb41c2834d8ba100f5beb6f63af90b49854fe55762a69dfb.jpg",
+      "sha256": "e694822740f00e34cb41c2834d8ba100f5beb6f63af90b49854fe55762a69dfb",
+      "mime_type": "image/jpeg",
+      "size_bytes": 274299,
+      "alt": "濕地水岸落羽松與水面倒影的景觀照片",
+      "width": null,
+      "height": null
+    },
+    {
+      "id": "media-05",
+      "type": "image",
+      "source_path": "content/inbox/濕地水岸與落羽松季節景觀/月眉濕地落羽松4.jpg",
+      "storage_path": "content/media/b520c3a965bed07b22a9d5826857e169fc8a6067b47dc9a9fe03301ab9d3f0df.jpg",
+      "storage_url": "/media/b520c3a965bed07b22a9d5826857e169fc8a6067b47dc9a9fe03301ab9d3f0df.jpg",
+      "sha256": "b520c3a965bed07b22a9d5826857e169fc8a6067b47dc9a9fe03301ab9d3f0df",
+      "mime_type": "image/jpeg",
+      "size_bytes": 308196,
+      "alt": "濕地水岸落羽松與水面倒影的景觀照片",
+      "width": null,
+      "height": null
+    },
+    {
+      "id": "media-06",
+      "type": "image",
+      "source_path": "content/inbox/濕地水岸與落羽松季節景觀/月眉濕地落羽松5.jpg",
+      "storage_path": "content/media/a5e0e3f2471f5881fd294e310984c0afdf13d4a7c5f0684019c3ae383c129fc9.jpg",
+      "storage_url": "/media/a5e0e3f2471f5881fd294e310984c0afdf13d4a7c5f0684019c3ae383c129fc9.jpg",
+      "sha256": "a5e0e3f2471f5881fd294e310984c0afdf13d4a7c5f0684019c3ae383c129fc9",
+      "mime_type": "image/jpeg",
+      "size_bytes": 300288,
+      "alt": "濕地水岸落羽松與水面倒影的景觀照片",
+      "width": null,
+      "height": null
+    },
+    {
+      "id": "media-07",
+      "type": "image",
+      "source_path": "content/inbox/濕地水岸與落羽松季節景觀/落羽松.jpg",
+      "storage_path": "content/media/9681008b370eaae89819a9fa694b4c3b72d049fbe4d54ec6c3d128c4285d6d5e.jpg",
+      "storage_url": "/media/9681008b370eaae89819a9fa694b4c3b72d049fbe4d54ec6c3d128c4285d6d5e.jpg",
+      "sha256": "9681008b370eaae89819a9fa694b4c3b72d049fbe4d54ec6c3d128c4285d6d5e",
+      "mime_type": "image/jpeg",
+      "size_bytes": 746762,
+      "alt": "落羽松季節葉色與水岸景觀照片",
+      "width": null,
+      "height": null
+    }
+  ],
+  "publishing": {
+    "website": {
+      "status": "pending",
+      "url": null
+    },
+    "facebook": {
+      "status": "pending",
+      "post_id": null
+    },
+    "instagram": {
+      "status": "pending",
+      "post_id": null
+    },
+    "threads": {
+      "status": "pending",
+      "post_id": null
+    },
+    "youtube": {
+      "status": "skipped",
+      "post_id": null,
+      "reason": "no_video"
+    }
+  },
+  "import": {
+    "status": "published",
+    "imported_at": "2026-08-04T23:02:34.883Z",
+    "dry_run": false,
+    "approved_at": "2026-08-04T23:03:43.487Z"
+  },
+  "created_at": "2026-08-04T23:02:34.883Z",
+  "updated_at": "2026-08-04T23:03:43.487Z"
+}

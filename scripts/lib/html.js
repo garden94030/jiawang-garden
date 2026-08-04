@@ -181,6 +181,7 @@ ${update.media.map(media => {
 function updateSchemas(update, siteUrl) {
   const baseUrl = normalizeSiteUrl(siteUrl);
   const pageUrl = `${baseUrl}/updates/${encodeURIComponent(update.slug)}/`;
+  const logoUrl = `${baseUrl}/branding/google-ads-logo-square.png`;
   const articleId = `${pageUrl}#article`;
   const graph = [{
     '@type': 'Article',
@@ -191,7 +192,12 @@ function updateSchemas(update, siteUrl) {
     ...(update.publishedAt ? { datePublished: update.publishedAt } : {}),
     ...(update.updatedAt ? { dateModified: update.updatedAt } : {}),
     author: { '@type': 'Organization', name: ORGANIZATION_NAME, url: `${baseUrl}/` },
-    publisher: { '@type': 'Organization', name: ORGANIZATION_NAME, url: `${baseUrl}/` }
+    publisher: {
+      '@type': 'Organization',
+      name: ORGANIZATION_NAME,
+      url: `${baseUrl}/`,
+      logo: { '@type': 'ImageObject', url: logoUrl }
+    }
   }];
 
   const images = update.media.filter(item => item.type === 'image');
@@ -251,6 +257,9 @@ function documentTemplate({ title, description, canonical, image, type = 'websit
   <title>${escapeHtml(title)}</title>
   <meta name="description" content="${escapeHtml(description)}">
   <link rel="canonical" href="${escapeHtml(canonical)}">
+  <link rel="icon" type="image/png" href="/branding/google-ads-logo-square.png">
+  <link rel="apple-touch-icon" href="/branding/google-ads-logo-square.png">
+  <meta name="theme-color" content="#1b4332">
   <meta property="og:locale" content="zh_TW">
   <meta property="og:type" content="${escapeHtml(type)}">
   <meta property="og:site_name" content="${SITE_NAME}">
@@ -291,8 +300,7 @@ function renderUpdatePage(update, siteUrl = DEFAULT_SITE_URL) {
     </header>
     ${renderMedia(update)}
     <div class="article-body">${paragraphs(update.body)}</div>
-    ${update.sourceUrl ? `<p class="source">資料來源：<a href="${escapeHtml(update.sourceUrl)}" rel="noopener noreferrer">${escapeHtml(sourceLabel)}</a></p>` : ''}
-    <div class="actions"><a class="button" href="/#contact">聯絡佳旺景觀園藝</a><a class="button secondary" href="/updates/">查看所有更新</a></div>
+${update.sourceUrl ? `    <p class="source">資料來源：<a href="${escapeHtml(update.sourceUrl)}" rel="noopener noreferrer">${escapeHtml(sourceLabel)}</a></p>\n` : ''}    <div class="actions"><a class="button" href="/#contact">聯絡佳旺景觀園藝</a><a class="button secondary" href="/updates/">查看所有更新</a></div>
   </article>
 </main>`;
   return documentTemplate({

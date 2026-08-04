@@ -1,5 +1,74 @@
 {
   "schema_version": 1,
-  "updated_at": null,
-  "imports": []
+  "updated_at": "2026-08-04T23:02:34.883Z",
+  "imports": [
+    {
+      "content_id": "jw-undated-local-034dd7b938a2",
+      "source": {
+        "platform": "local",
+        "item_id": "甲蟲取食與樹洞聚集觀察",
+        "source_id": "local:甲蟲取食與樹洞聚集觀察"
+      },
+      "media_sha256": [
+        "773ad9d273b39cb0d07d1eea56633bbc87faca51320d33e6d1be16dc5a7a2510",
+        "9e85c567149204aeeb774bf2d83c357e33cf7fb8815ea1ad765b3435605d9878",
+        "15ad8291b87c9776a4cb5c3f675264b6857e8891e5c9b63e93c7285fa968ecd0"
+      ],
+      "record_path": "content/updates/jw-undated-local-034dd7b938a2.json",
+      "imported_at": "2026-08-04T23:02:34.883Z"
+    },
+    {
+      "content_id": "jw-undated-local-fd98d1364965",
+      "source": {
+        "platform": "local",
+        "item_id": "蜜源植物與蝴蝶群聚觀察",
+        "source_id": "local:蜜源植物與蝴蝶群聚觀察"
+      },
+      "media_sha256": [
+        "58fb00a9034db61b3ed9b6917d1c09acc04cc5b4d54029a9d028385b65477579",
+        "4004f807e22fe1920d9d2d0dc54fa81bc894f88a08bb12cbcb42015c42e94734",
+        "3a47c20c1ce876f9d3b19e65a9850a12ecdd48261e3d39726b18f5ef919da85d"
+      ],
+      "record_path": "content/updates/jw-undated-local-fd98d1364965.json",
+      "imported_at": "2026-08-04T23:02:34.883Z"
+    },
+    {
+      "content_id": "jw-undated-local-ff3bf997e01e",
+      "source": {
+        "platform": "local",
+        "item_id": "蝴蝶幼生期與葉片取食觀察",
+        "source_id": "local:蝴蝶幼生期與葉片取食觀察"
+      },
+      "media_sha256": [
+        "db0215e774613b4b2e16100eebac5b2c2fb57c46ee2f1f81dd22e0bc6c3c547d",
+        "0362ddc05369bafd3840538fd5340f0d1994c232b6c13025bd9d9709a9fb72ad",
+        "7215707789ed848870236cec941b33821076653b1376efec9963ec4285f1d8bd",
+        "0534f1e086f43d1c5d086e81f0eeab1e66972c4e8547b2dce9e81e07f060e0de",
+        "8c0ef36e78b4e1b6b4e31ba55712f4b51d72a54c5d17c327bf90175c20260b06",
+        "66ed63ecad1a61684b26305fd6f88ea4c0f8695b3d597fb17375bc1884afc60b",
+        "6b3cdd85ffa11bc5b54dd1a01e276d315e0fd5a6f9c591a31c9e787d27d8993c"
+      ],
+      "record_path": "content/updates/jw-undated-local-ff3bf997e01e.json",
+      "imported_at": "2026-08-04T23:02:34.883Z"
+    },
+    {
+      "content_id": "jw-undated-local-5cea96dd4637",
+      "source": {
+        "platform": "local",
+        "item_id": "濕地水岸與落羽松季節景觀",
+        "source_id": "local:濕地水岸與落羽松季節景觀"
+      },
+      "media_sha256": [
+        "ee41e2689863aa43f76e2945b3729017d686d45d8c5934d0f843ad76ca8349dc",
+        "b553ff2403488a5f2167b17515f5a95ae05f41bc21197d03223973cc9b76cd93",
+        "7f5697174430b0a4764928dfa620cc9b890e1c570d454dea3ff28fb008f85dfd",
+        "e694822740f00e34cb41c2834d8ba100f5beb6f63af90b49854fe55762a69dfb",
+        "b520c3a965bed07b22a9d5826857e169fc8a6067b47dc9a9fe03301ab9d3f0df",
+        "a5e0e3f2471f5881fd294e310984c0afdf13d4a7c5f0684019c3ae383c129fc9",
+        "9681008b370eaae89819a9fa694b4c3b72d049fbe4d54ec6c3d128c4285d6d5e"
+      ],
+      "record_path": "content/updates/jw-undated-local-5cea96dd4637.json",
+      "imported_at": "2026-08-04T23:02:34.883Z"
+    }
+  ]
 }

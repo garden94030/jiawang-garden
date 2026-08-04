@@ -105,6 +105,7 @@ test('build creates crawlable escaped pages and only real media schemas', t => {
 
   assert.equal(result.count, 1);
   assert.match(page, /<link rel="canonical" href="https:\/\/garden\.example\/updates\/garden-update\/">/);
+  assert.match(page, /rel="icon"[^>]+google-ads-logo-square\.png/);
   assert.match(page, /蝴蝶園 &lt;script&gt;alert\(&quot;x&quot;\)&lt;\/script&gt;/);
   assert.doesNotMatch(page, /<script>alert\("x"\)<\/script>/);
   assert.match(page, /<img[^>]+width="1600"[^>]+height="1200"/);
@@ -117,6 +118,7 @@ test('build creates crawlable escaped pages and only real media schemas', t => {
   const types = schema['@graph'].map(item => item['@type']);
   assert.deepEqual(types, ['Article', 'ImageObject', 'VideoObject', 'BreadcrumbList']);
   assert.equal(schema['@graph'][0].headline, '蝴蝶園 <script>alert("x")</script>');
+  assert.equal(schema['@graph'][0].publisher.logo.url, 'https://garden.example/branding/google-ads-logo-square.png');
   assert.equal(schema['@graph'][1].contentUrl, 'https://media.example/garden.jpg');
   assert.equal(schema['@graph'][2].contentUrl, 'https://media.example/garden.mp4');
 });

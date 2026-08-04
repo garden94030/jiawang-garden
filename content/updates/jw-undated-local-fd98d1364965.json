@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "id": "jw-undated-local-fd98d1364965",
+  "source": {
+    "platform": "local",
+    "item_id": "蜜源植物與蝴蝶群聚觀察",
+    "source_id": "local:蜜源植物與蝴蝶群聚觀察",
+    "permalink": null,
+    "published_at": null,
+    "original_text": "蜜源植物與蝴蝶群聚觀察紀錄\n\n整理既有影像，記錄多隻蝴蝶停棲在枝條與白色花序上的情形。僅呈現照片可見內容，不據此判定蝴蝶或植物種類，也不推論族群變化、復育成效、拍攝地點或日期。"
+  },
+  "content": {
+    "title": "蜜源植物與蝴蝶群聚觀察紀錄",
+    "summary": "整理既有影像，記錄多隻蝴蝶停棲在枝條與白色花序上的情形。",
+    "body": "照片可見多隻蝴蝶停棲在枝條與白色花序上。本次僅呈現影像可見內容，不據此判定蝴蝶或植物種類，也不推論族群變化、復育成效、拍攝地點或日期。",
+    "category": "蝴蝶生態",
+    "species": null,
+    "location": null,
+    "event_date": null,
+    "slug": "蜜源植物與蝴蝶群聚觀察"
+  },
+  "media": [
+    {
+      "id": "media-01",
+      "type": "image",
+      "source_path": "content/inbox/蜜源植物與蝴蝶群聚觀察/493929516_2894193494085323_2584959692886604889_n.jpg",
+      "storage_path": "content/media/58fb00a9034db61b3ed9b6917d1c09acc04cc5b4d54029a9d028385b65477579.jpg",
+      "storage_url": "/media/58fb00a9034db61b3ed9b6917d1c09acc04cc5b4d54029a9d028385b65477579.jpg",
+      "sha256": "58fb00a9034db61b3ed9b6917d1c09acc04cc5b4d54029a9d028385b65477579",
+      "mime_type": "image/jpeg",
+      "size_bytes": 279337,
+      "alt": "多隻蝴蝶停棲在枝條與白色花序上的觀察照片",
+      "width": null,
+      "height": null
+    },
+    {
+      "id": "media-02",
+      "type": "image",
+      "source_path": "content/inbox/蜜源植物與蝴蝶群聚觀察/496487630_2908907939280545_699156705792590163_n.jpg",
+      "storage_path": "content/media/4004f807e22fe1920d9d2d0dc54fa81bc894f88a08bb12cbcb42015c42e94734.jpg",
+      "storage_url": "/media/4004f807e22fe1920d9d2d0dc54fa81bc894f88a08bb12cbcb42015c42e94734.jpg",
+      "sha256": "4004f807e22fe1920d9d2d0dc54fa81bc894f88a08bb12cbcb42015c42e94734",
+      "mime_type": "image/jpeg",
+      "size_bytes": 680940,
+      "alt": "多隻蝴蝶停棲在枝條與白色花序上的觀察照片",
+      "width": null,
+      "height": null
+    },
+    {
+      "id": "media-03",
+      "type": "image",
+      "source_path": "content/inbox/蜜源植物與蝴蝶群聚觀察/497391050_2908908189280520_8986996305952690300_n.jpg",
+      "storage_path": "content/media/3a47c20c1ce876f9d3b19e65a9850a12ecdd48261e3d39726b18f5ef919da85d.jpg",
+      "storage_url": "/media/3a47c20c1ce876f9d3b19e65a9850a12ecdd48261e3d39726b18f5ef919da85d.jpg",
+      "sha256": "3a47c20c1ce876f9d3b19e65a9850a12ecdd48261e3d39726b18f5ef919da85d",
+      "mime_type": "image/jpeg",
+      "size_bytes": 924387,
+      "alt": "多隻蝴蝶停棲在枝條與白色花序上的觀察照片",
+      "width": null,
+      "height": null
+    }
+  ],
+  "publishing": {
+    "website": {
+      "status": "pending",
+      "url": null
+    },
+    "facebook": {
+      "status": "pending",
+      "post_id": null
+    },
+    "instagram": {
+      "status": "pending",
+      "post_id": null
+    },
+    "threads": {
+      "status": "pending",
+      "post_id": null
+    },
+    "youtube": {
+      "status": "skipped",
+      "post_id": null,
+      "reason": "no_video"
+    }
+  },
+  "import": {
+    "status": "published",
+    "imported_at": "2026-08-04T23:02:34.883Z",
+    "dry_run": false,
+    "approved_at": "2026-08-04T23:03:43.305Z"
+  },
+  "created_at": "2026-08-04T23:02:34.883Z",
+  "updated_at": "2026-08-04T23:03:43.305Z"
+}

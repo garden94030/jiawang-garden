@@ -6,6 +6,8 @@
 - 遠端儲存庫：`https://github.com/garden94030/jiawang-garden.git`
 - 現行網站：`https://jiawang-garden.onrender.com`
 
+> 本文件第 2 節保留 2026-08-04 開始落地前的基準狀態，不代表目前狀態。實際完成項目、外部待辦與最新接續位置以 `IMPLEMENTATION_STATUS.md`、`HANDOVER.md` 為準。
+
 ## 1. 目標
 
 將現有「佳旺景觀園藝工程行」網站改造成一套低維護的內容發布系統：

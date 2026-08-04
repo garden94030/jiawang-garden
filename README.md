@@ -17,7 +17,7 @@ npm start
 
 - 舊版管理與公開上傳頁已停用。
 - 未設定 `ADMIN_API_TOKEN` 時，所有管理寫入 API 都會拒絕請求。
-- 未設定耐久的聯絡資料保存方式前，`CONTACT_FORM_ENABLED` 維持 `false`，網站不會顯示假的送出成功。
+- 未設定耐久保存方式前，`DURABLE_WRITES_ENABLED` 與 `CONTACT_FORM_ENABLED` 均維持 `false`；即使誤設管理 token，網站仍不會在臨時磁碟回報寫入成功。
 - 真實密鑰只放 Render 或 GitHub Secrets，不得寫入 Git。
 - `server.js`、`package.json`、環境設定範本與規劃文件不會由網站公開提供。
 
@@ -28,6 +28,7 @@ npm start
 - 詳細落地方案：`IMPLEMENTATION_PLAN.md`
 - 實際操作手冊：`OPERATIONS.md`
 - 完成狀態與外部待辦：`IMPLEMENTATION_STATUS.md`
+- 最新接續位置與驗證命令：`HANDOVER.md`
 - 帳號申請順序：`ACCOUNT_SETUP_CHECKLIST.md`
 - 每週內容來源：公司 Facebook 粉絲專頁
 - 發布目標：公司網站、Facebook、Instagram、Threads、YouTube

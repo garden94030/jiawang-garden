@@ -11,8 +11,20 @@ const DATA_DIR = path.resolve(process.env.DATA_DIR || path.join(ROOT_DIR, 'data'
 const UPLOADS_DIR = path.resolve(process.env.UPLOADS_DIR || path.join(ROOT_DIR, 'uploads'));
 const DATA_FILE = path.join(DATA_DIR, 'shared-data.json');
 const ADMIN_API_TOKEN = process.env.ADMIN_API_TOKEN || '';
-const ADMIN_ENABLED = ADMIN_API_TOKEN.length >= 32;
-const CONTACT_FORM_ENABLED = process.env.CONTACT_FORM_ENABLED === 'true';
+
+function writeConfiguration(env = process.env) {
+  const durableWritesEnabled = env.DURABLE_WRITES_ENABLED === 'true';
+  const adminApiToken = env.ADMIN_API_TOKEN || '';
+  return {
+    durableWritesEnabled,
+    adminEnabled: durableWritesEnabled && adminApiToken.length >= 32,
+    contactFormEnabled: durableWritesEnabled && env.CONTACT_FORM_ENABLED === 'true',
+  };
+}
+
+const WRITE_CONFIGURATION = writeConfiguration();
+const ADMIN_ENABLED = WRITE_CONFIGURATION.adminEnabled;
+const CONTACT_FORM_ENABLED = WRITE_CONFIGURATION.contactFormEnabled;
 
 fs.mkdirSync(DATA_DIR, { recursive: true });
 fs.mkdirSync(UPLOADS_DIR, { recursive: true });
@@ -22,10 +34,15 @@ function emptyData() {
 }
 
 function normalizeData(value) {
-  const data = value && typeof value === 'object' ? value : {};
+  if (!value || typeof value !== 'object' || Array.isArray(value)) {
+    throw new Error('資料格式錯誤：根資料必須是物件');
+  }
+  if (!Array.isArray(value.photos) || !Array.isArray(value.messages)) {
+    throw new Error('資料格式錯誤：photos 與 messages 必須是陣列');
+  }
   return {
-    photos: Array.isArray(data.photos) ? data.photos : [],
-    messages: Array.isArray(data.messages) ? data.messages : [],
+    photos: value.photos,
+    messages: value.messages,
   };
 }
 
@@ -58,7 +75,7 @@ function saveData(value) {
   }
 }
 
-if (!fs.existsSync(DATA_FILE)) saveData(emptyData());
+if (WRITE_CONFIGURATION.durableWritesEnabled && !fs.existsSync(DATA_FILE)) saveData(emptyData());
 
 function safeTokenEquals(received, expected) {
   if (!received || !expected) return false;
@@ -224,7 +241,7 @@ function createApp() {
 
   app.post('/api/messages', (req, res) => {
     if (!CONTACT_FORM_ENABLED) {
-      return res.status(503).json({ success: false, error: '線上表單尚未啟用，請改用電話聯絡' });
+      return res.status(503).json({ success: false, error: '線上表單尚未啟用，請改用電子信箱或 Facebook 聯絡' });
     }
 
     const now = Date.now();
@@ -301,9 +318,10 @@ function createApp() {
 if (require.main === module) {
   createApp().listen(PORT, '0.0.0.0', () => {
     console.log(`佳旺景觀園藝網站已啟動：http://localhost:${PORT}`);
-    if (!ADMIN_ENABLED) console.log('管理寫入功能未啟用（ADMIN_API_TOKEN 未設定或少於 32 字元）');
+    if (!WRITE_CONFIGURATION.durableWritesEnabled) console.log('耐久寫入功能未啟用（DURABLE_WRITES_ENABLED=false）');
+    if (!ADMIN_ENABLED) console.log('管理寫入功能未啟用（耐久寫入未啟用，或 ADMIN_API_TOKEN 未設定／少於 32 字元）');
     if (!CONTACT_FORM_ENABLED) console.log('線上聯絡表單未啟用（CONTACT_FORM_ENABLED=false）');
   });
 }
 
-module.exports = { createApp, loadData, saveData, safeTokenEquals };
+module.exports = { createApp, loadData, normalizeData, saveData, safeTokenEquals, writeConfiguration };

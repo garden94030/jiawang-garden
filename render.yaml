@@ -10,3 +10,5 @@ services:
         value: production
       - key: CONTACT_FORM_ENABLED
         value: "false"
+      - key: DURABLE_WRITES_ENABLED
+        value: "false"

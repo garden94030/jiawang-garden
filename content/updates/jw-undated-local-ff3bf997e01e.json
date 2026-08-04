@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "id": "jw-undated-local-ff3bf997e01e",
+  "source": {
+    "platform": "local",
+    "item_id": "蝴蝶幼生期與葉片取食觀察",
+    "source_id": "local:蝴蝶幼生期與葉片取食觀察",
+    "permalink": null,
+    "published_at": null,
+    "original_text": "蝴蝶幼生期與葉片取食觀察紀錄\n\n整理既有影像，記錄葉面卵群、不同外觀的幼蟲，以及葉片上的取食痕跡。照片檔名包含物種名稱，但本次未進行物種鑑定；拍攝日期、地點與寄主植物亦尚未確認。"
+  },
+  "content": {
+    "title": "蝴蝶幼生期與葉片取食觀察紀錄",
+    "summary": "整理既有影像，記錄葉面卵群、不同外觀的幼蟲，以及葉片上的取食痕跡。",
+    "body": "照片可見葉面卵群、不同外觀的幼蟲，以及葉片上的取食痕跡。部分檔名包含物種名稱，但本次未進行物種鑑定；拍攝日期、地點與寄主植物亦尚未確認。",
+    "category": "蝴蝶生態",
+    "species": null,
+    "location": null,
+    "event_date": null,
+    "slug": "蝴蝶幼生期與葉片取食觀察"
+  },
+  "media": [
+    {
+      "id": "media-01",
+      "type": "image",
+      "source_path": "content/inbox/蝴蝶幼生期與葉片取食觀察/504920149_2938814712956534_6779261037716695975_n.jpg",
+      "storage_path": "content/media/db0215e774613b4b2e16100eebac5b2c2fb57c46ee2f1f81dd22e0bc6c3c547d.jpg",
+      "storage_url": "/media/db0215e774613b4b2e16100eebac5b2c2fb57c46ee2f1f81dd22e0bc6c3c547d.jpg",
+      "sha256": "db0215e774613b4b2e16100eebac5b2c2fb57c46ee2f1f81dd22e0bc6c3c547d",
+      "mime_type": "image/jpeg",
+      "size_bytes": 402282,
+      "alt": "蝴蝶幼生期與葉片取食痕跡觀察照片",
+      "width": null,
+      "height": null
+    },
+    {
+      "id": "media-02",
+      "type": "image",
+      "source_path": "content/inbox/蝴蝶幼生期與葉片取食觀察/547624031_3041356406035697_1729142269086588126_n.jpg",
+      "storage_path": "content/media/0362ddc05369bafd3840538fd5340f0d1994c232b6c13025bd9d9709a9fb72ad.jpg",
+      "storage_url": "/media/0362ddc05369bafd3840538fd5340f0d1994c232b6c13025bd9d9709a9fb72ad.jpg",
+      "sha256": "0362ddc05369bafd3840538fd5340f0d1994c232b6c13025bd9d9709a9fb72ad",
+      "mime_type": "image/jpeg",
+      "size_bytes": 76307,
+      "alt": "蝴蝶幼生期與葉片取食痕跡觀察照片",
+      "width": null,
+      "height": null
+    },
+    {
+      "id": "media-03",
+      "type": "image",
+      "source_path": "content/inbox/蝴蝶幼生期與葉片取食觀察/557599720_3063198700518134_3323221086136232409_n.jpg",
+      "storage_path": "content/media/7215707789ed848870236cec941b33821076653b1376efec9963ec4285f1d8bd.jpg",
+      "storage_url": "/media/7215707789ed848870236cec941b33821076653b1376efec9963ec4285f1d8bd.jpg",
+      "sha256": "7215707789ed848870236cec941b33821076653b1376efec9963ec4285f1d8bd",
+      "mime_type": "image/jpeg",
+      "size_bytes": 452734,
+      "alt": "蝴蝶幼生期與葉片取食痕跡觀察照片",
+      "width": null,
+      "height": null
+    },
+    {
+      "id": "media-04",
+      "type": "image",
+      "source_path": "content/inbox/蝴蝶幼生期與葉片取食觀察/入冬後红肩粉蝶.jpg",
+      "storage_path": "content/media/0534f1e086f43d1c5d086e81f0eeab1e66972c4e8547b2dce9e81e07f060e0de.jpg",
+      "storage_url": "/media/0534f1e086f43d1c5d086e81f0eeab1e66972c4e8547b2dce9e81e07f060e0de.jpg",
+      "sha256": "0534f1e086f43d1c5d086e81f0eeab1e66972c4e8547b2dce9e81e07f060e0de",
+      "mime_type": "image/jpeg",
+      "size_bytes": 97733,
+      "alt": "蝴蝶幼生期與葉片取食痕跡觀察照片",
+      "width": null,
+      "height": null
+    },
+    {
+      "id": "media-05",
+      "type": "image",
+      "source_path": "content/inbox/蝴蝶幼生期與葉片取食觀察/台灣黃蝶幼蟲1.jpg",
+      "storage_path": "content/media/8c0ef36e78b4e1b6b4e31ba55712f4b51d72a54c5d17c327bf90175c20260b06.jpg",
+      "storage_url": "/media/8c0ef36e78b4e1b6b4e31ba55712f4b51d72a54c5d17c327bf90175c20260b06.jpg",
+      "sha256": "8c0ef36e78b4e1b6b4e31ba55712f4b51d72a54c5d17c327bf90175c20260b06",
+      "mime_type": "image/jpeg",
+      "size_bytes": 179359,
+      "alt": "蝴蝶幼生期與葉片取食痕跡觀察照片",
+      "width": null,
+      "height": null
+    },
+    {
+      "id": "media-06",
+      "type": "image",
+      "source_path": "content/inbox/蝴蝶幼生期與葉片取食觀察/台灣黃蝶幼蟲2.jpg",
+      "storage_path": "content/media/66ed63ecad1a61684b26305fd6f88ea4c0f8695b3d597fb17375bc1884afc60b.jpg",
+      "storage_url": "/media/66ed63ecad1a61684b26305fd6f88ea4c0f8695b3d597fb17375bc1884afc60b.jpg",
+      "sha256": "66ed63ecad1a61684b26305fd6f88ea4c0f8695b3d597fb17375bc1884afc60b",
+      "mime_type": "image/jpeg",
+      "size_bytes": 258476,
+      "alt": "蝴蝶幼生期與葉片取食痕跡觀察照片",
+      "width": null,
+      "height": null
+    },
+    {
+      "id": "media-07",
+      "type": "image",
+      "source_path": "content/inbox/蝴蝶幼生期與葉片取食觀察/臺灣麝香鳳蝶幼蟲.jpg",
+      "storage_path": "content/media/6b3cdd85ffa11bc5b54dd1a01e276d315e0fd5a6f9c591a31c9e787d27d8993c.jpg",
+      "storage_url": "/media/6b3cdd85ffa11bc5b54dd1a01e276d315e0fd5a6f9c591a31c9e787d27d8993c.jpg",
+      "sha256": "6b3cdd85ffa11bc5b54dd1a01e276d315e0fd5a6f9c591a31c9e787d27d8993c",
+      "mime_type": "image/jpeg",
+      "size_bytes": 248458,
+      "alt": "蝴蝶幼生期與葉片取食痕跡觀察照片",
+      "width": null,
+      "height": null
+    }
+  ],
+  "publishing": {
+    "website": {
+      "status": "pending",
+      "url": null
+    },
+    "facebook": {
+      "status": "pending",
+      "post_id": null
+    },
+    "instagram": {
+      "status": "pending",
+      "post_id": null
+    },
+    "threads": {
+      "status": "pending",
+      "post_id": null
+    },
+    "youtube": {
+      "status": "skipped",
+      "post_id": null,
+      "reason": "no_video"
+    }
+  },
+  "import": {
+    "status": "published",
+    "imported_at": "2026-08-04T23:02:34.883Z",
+    "dry_run": false,
+    "approved_at": "2026-08-04T23:03:43.395Z"
+  },
+  "created_at": "2026-08-04T23:02:34.883Z",
+  "updated_at": "2026-08-04T23:03:43.395Z"
+}

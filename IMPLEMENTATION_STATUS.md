@@ -1,6 +1,6 @@
 # 落地狀態
 
-更新日期：2026-08-04
+更新日期：2026-08-05
 
 ## 已完成
 
@@ -14,6 +14,9 @@
 - 封存或改 slug 後，舊的產生頁會在下次 build 移除。
 - Facebook／Instagram／Threads／YouTube adapters 與每平台狀態；不確定結果停止重試。
 - GitHub Actions 每週排程與 dry-run／live 雙重開關。
+- 正方形品牌標誌已建立並公開，首頁與更新頁已加入 favicon、Apple 圖示及 `Organization.logo` 結構化資料。
+- 依實際影像整理並發布 4 篇自然觀察內容，共 20 張照片；未猜測日期、客戶、工程歸屬或未鑑定物種。
+- Runtime JSON 對錯誤 schema 同樣 fail-closed；管理上傳與聯絡表單另需 `DURABLE_WRITES_ENABLED=true`，避免在 Render 臨時磁碟誤報成功。
 
 ## 需要帳號持有人完成，程式不能代做
 
@@ -30,3 +33,5 @@
 - 公開 repo 舊 `master` 分支已刪除，但曾公開的 key 仍必須在原服務端輪替。
 - 外部平台沒有憑證，本輪沒有也不能宣稱已完成真實跨平台發文。
 - Render 沒有持久磁碟，因此管理上傳與站內表單保持停用；網站內容改走 Git 與物件儲存流程。
+- `SOCIAL_PUBLISH_LIVE=false`，目前 GitHub 尚未設定平台 Secrets；跨平台真實發布仍未啟用。
+- 無關的遠端 `claude/amazing-newton` 分支仍保留；未取得明確刪除授權前不做破壞性處理。
