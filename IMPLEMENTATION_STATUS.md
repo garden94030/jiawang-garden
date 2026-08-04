@@ -14,6 +14,7 @@
 - 封存或改 slug 後，舊的產生頁會在下次 build 移除。
 - Facebook／Instagram／Threads／YouTube adapters 與每平台狀態；不確定結果停止重試。
 - GitHub Actions 每週排程與 dry-run／live 雙重開關。
+- 現行 HEAD 的 Weekly content sync 已完成一次 GitHub Actions dry-run，未進入 live、未對外發文。
 - 正方形品牌標誌已建立並公開，首頁與更新頁已加入 favicon、Apple 圖示及 `Organization.logo` 結構化資料。
 - 依實際影像整理並發布 4 篇自然觀察內容，共 20 張照片；未猜測日期、客戶、工程歸屬或未鑑定物種。
 - Runtime JSON 對錯誤 schema 同樣 fail-closed；管理上傳與聯絡表單另需 `DURABLE_WRITES_ENABLED=true`，避免在 Render 臨時磁碟誤報成功。
