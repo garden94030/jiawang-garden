@@ -38,7 +38,7 @@
 
 日常聯絡可使用 `gardenjiawang@gmail.com`。最省事的內容發布方式是建立「佳旺景觀園藝」Facebook Page，父親只需要在 Page 發照片與文字。由你保留 Page 完整控制權，再授予父親發文所需的 Page access。Meta 的官方建立流程本身沒有付款步驟；廣告或加強推廣才是另外選購。
 
-目前提供的 `alia.liu.60365` 是個人 Facebook 帳號，網站可以連結，但正式每週自動同步只使用 Facebook Page 與官方 API，不抓個人密碼、Cookie，也不以爬蟲繞過登入限制。
+網站已改用帳號持有人於 2026-08-04 提供的 Facebook 聯絡入口：<https://www.facebook.com/profile.php?id=61592853779683>。網址中的編輯追蹤參數已移除，只保留穩定的數字識別碼。Facebook 公開頁面目前無法由自動工具確認這個識別碼是否屬於公司 Page，因此正式每週同步仍須先以 Meta 官方 Page 工具確認帳號類型並取得 Page access token；不抓個人密碼、Cookie，也不以爬蟲繞過登入限制。
 
 官方操作入口：
 

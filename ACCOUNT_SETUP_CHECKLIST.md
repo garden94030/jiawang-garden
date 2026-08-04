@@ -7,9 +7,10 @@
 ## 第一批：網站聯絡與 Facebook 來源
 
 1. 確認可以登入 `gardenjiawang@gmail.com`，並開啟 Google 帳號兩步驟驗證。
-2. 使用你自己的 Facebook 帳號建立「佳旺景觀園藝」Page：<https://www.facebook.com/pages/create>
-3. 你保留 Page 完整控制權，父親只取得日常發照片所需的 Page access：<https://www.facebook.com/help/187316341316631>
-4. 建立 Meta Developer App，取得公司 Page 的 Page ID 與官方 API token。不可提供個人 Facebook 密碼或瀏覽器 Cookie。
+2. 已收到 Facebook 聯絡入口：<https://www.facebook.com/profile.php?id=61592853779683>。先在 Facebook 內確認它是「佳旺景觀園藝」Page，而不是個人檔案；目前程式端無法獨立確認帳號類型。
+3. 如果它是個人檔案，使用你自己的 Facebook 帳號建立「佳旺景觀園藝」Page：<https://www.facebook.com/pages/create>；如果已是 Page，略過建立步驟。
+4. 你保留 Page 完整控制權，父親只取得日常發照片所需的 Page access：<https://www.facebook.com/help/187316341316631>
+5. 建立 Meta Developer App，取得公司 Page 的 Page ID 與官方 API token。不可提供個人 Facebook 密碼或瀏覽器 Cookie。
 
 Facebook Page 建立流程本身不要求付款；廣告及貼文加強推廣是另外選購。
 

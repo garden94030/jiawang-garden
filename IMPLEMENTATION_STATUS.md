@@ -7,7 +7,7 @@
 - 本機 Git／Node 專案初始化、依賴鎖定、Render health check。
 - 線上敏感路徑止血：不再公開 `server.js`、`package.json`、runtime JSON 或未授權留言。
 - 舊版瀏覽器管理密碼與假登入流程停用；管理 API 預設 fail-closed。
-- 聯絡表單在沒有耐久保存時停用；網頁改為使用者提供的 `gardenjiawang@gmail.com` 與 Facebook 聯絡入口。
+- 聯絡表單在沒有耐久保存時停用；網頁改為使用者提供的 `gardenjiawang@gmail.com` 與 Facebook 數字識別碼 `61592853779683` 聯絡入口。
 - 本機媒體 magic-byte、大小與 SHA-256 檢查、去重、manifest lock、原子 JSON 寫入及草稿核准流程。
 - Facebook Page 貼文正規化與 S3 相容物件儲存匯入器；缺少耐久儲存時不會保存臨時 CDN URL。
 - 靜態更新頁、首頁更新列表、canonical、Open Graph、JSON-LD、robots 與 sitemap。
@@ -19,7 +19,7 @@
 
 - 撤銷／輪替曾出現在公開舊分支的 proxy 與 Gemini API key。
 - 不再使用曾寫入公開 Git 歷史的舊網站管理密碼。
-- 建立公司 Facebook Page，將既有個人帳號內容手動挑選後重新發布，並授予必要 Page access。
+- 在 Facebook 內確認數字識別碼 `61592853779683` 是否為公司 Page；若仍是個人檔案，再建立公司 Page，手動挑選既有內容後重新發布，並授予必要 Page access。
 - 建立並授權 Meta App、Instagram 專業帳號、Threads 與 YouTube OAuth。
 - 建立 S3 相容耐久物件儲存與公開唯讀媒體網域。
 - 在 GitHub 設定 `.env.example` 所列 Secrets／Variables；確認無誤後才把 `SOCIAL_PUBLISH_LIVE` 設為 `true`。
